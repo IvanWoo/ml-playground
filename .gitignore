@@ -1,2 +1,5 @@
 # jupyter
 .ipynb_checkpoints
+
+# pytorch
+/notebooks/data

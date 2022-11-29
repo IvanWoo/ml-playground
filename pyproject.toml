@@ -16,6 +16,7 @@ dependencies = [
     "torch>=1.13.0",
     "torchvision>=0.14.0",
     "torchaudio>=0.13.0",
+    "torchinfo>=1.7.1",
 ]
 requires-python = ">=3.9"
 license = {text = "MIT"}

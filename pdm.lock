@@ -1041,6 +1041,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "torchinfo"
+version = "1.7.1"
+requires_python = ">=3.7"
+summary = "Model summary in PyTorch, based off of the original torchsummary."
+
+[[package]]
 name = "torchvision"
 version = "0.14.0"
 requires_python = ">=3.7"
@@ -1122,7 +1128,7 @@ summary = "Backport of pathlib-compatible object wrapper for zip files"
 
 [metadata]
 lock_version = "4.0"
-content_hash = "sha256:fd05c832dbc7e37d20ce5c8cc06cef1b35b6dff4a6443c4688c6eadceb71e03a"
+content_hash = "sha256:f39df128cdf77656a3167dbbc680299c948f4eefd46d45001de7e8fc77ff66b1"
 
 [metadata.files]
 "absl-py 1.3.0" = [
@@ -1521,10 +1527,6 @@ content_hash = "sha256:fd05c832dbc7e37d20ce5c8cc06cef1b35b6dff4a6443c4688c6eadce
 "importlib-metadata 5.1.0" = [
     {url = "https://files.pythonhosted.org/packages/32/5a/e0d75c8010295ae6746f379f5324bc726076dfc426548bfa6f0763fce870/importlib_metadata-5.1.0.tar.gz", hash = "sha256:d5059f9f1e8e41f80e9c56c2ee58811450c31984dfa625329ffd7c0dad88a73b"},
     {url = "https://files.pythonhosted.org/packages/e1/16/1f59f5d87d256012e9cdf0e8af8810965fa253e835cfecce64f4b11d4f2d/importlib_metadata-5.1.0-py3-none-any.whl", hash = "sha256:d84d17e21670ec07990e1044a99efe8d615d860fd176fc29ef5c306068fda313"},
-]
-"ipykernel 6.18.1" = [
-    {url = "https://files.pythonhosted.org/packages/8a/67/47b1d910e4555031822bcc9e10a756a2b3aacb6e310e80b1c5328c5dc56c/ipykernel-6.18.1-py3-none-any.whl", hash = "sha256:18c298565218e602939dd03b56206912433ebdb6b5800afd9177bbce8d96318b"},
-    {url = "https://files.pythonhosted.org/packages/b7/50/b1b14fc34c603b1d27874c6242f9cad25c3df1f4b4668e7c4bd1bc0c8d2b/ipykernel-6.18.1.tar.gz", hash = "sha256:71f21ce281da5a4e73ec4a7ecdf98802d9e65d58cdb7e22ff824ca994ce5114b"},
 ]
 "ipython 8.7.0" = [
     {url = "https://files.pythonhosted.org/packages/24/ef/af8899488ae62a35b0815aa955779db25e616defb0061a478203fc460f40/ipython-8.7.0-py3-none-any.whl", hash = "sha256:352042ddcb019f7c04e48171b4dd78e4c4bb67bf97030d170e154aac42b656d9"},
@@ -2269,6 +2271,10 @@ content_hash = "sha256:fd05c832dbc7e37d20ce5c8cc06cef1b35b6dff4a6443c4688c6eadce
     {url = "https://files.pythonhosted.org/packages/bd/39/ef41c86f8ba08e8ccd0b928faa8033f1260be031c14ea403f1ab42897742/torchaudio-0.13.0-cp39-cp39-manylinux2014_aarch64.whl", hash = "sha256:bb4d25cd50a088cf5b40e8316aae2d3af5b104c89335b398633ecf459b06d436"},
     {url = "https://files.pythonhosted.org/packages/d9/1a/71e9c2576373790f05cb8a10e4a3b7610bc49d9cee883a656f9e48647360/torchaudio-0.13.0-cp310-cp310-win_amd64.whl", hash = "sha256:8c1e7a4c7b98b7f5b2261fcc12ddd9b4ab6cc7564fb88bd1134f1b272fdac738"},
     {url = "https://files.pythonhosted.org/packages/da/81/d549a2e1616d405187847364d08727e838479e95ee92a7bc3dfd94935d92/torchaudio-0.13.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:42e8a01741c008d44f6480ce0646c7485d98c29c015c73625166db1240729f76"},
+]
+"torchinfo 1.7.1" = [
+    {url = "https://files.pythonhosted.org/packages/e6/a3/1a7647749a6c96edf8e97669586022b22fecbc471fe7823d720ce67975d4/torchinfo-1.7.1-py3-none-any.whl", hash = "sha256:792d429d87814aa9ddfb0f1b9d8c75861edc6099c5d753148064d3217128ff42"},
+    {url = "https://files.pythonhosted.org/packages/fd/3d/e7b7b391ef79d40e8e20a4cb922beee298432a62187e37834bbafb04f2be/torchinfo-1.7.1.tar.gz", hash = "sha256:7eb76ef0ca2d75aa7bf973451ba3693333ba97e197f8fa69d671b7f636384db4"},
 ]
 "torchvision 0.14.0" = [
     {url = "https://files.pythonhosted.org/packages/11/e2/9e7a92510044f82e26d382361b14377b61ca570266e53ae7c37f8ca3631c/torchvision-0.14.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:f6b41df5e4daf6ee21b61ae5a77abcce7bf7d0f7596c920ba4919fe7b7727f20"},
