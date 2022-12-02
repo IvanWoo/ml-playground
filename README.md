@@ -10,7 +10,7 @@ conda init fish
 ```
 
 ```sh
-conda create -n ml-playground python=3.9
+conda create -n ml-playground python=3.9 -y
 conda activate ml-playground
 ```
 
