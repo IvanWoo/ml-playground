@@ -7,5 +7,10 @@
 # pytorch
 /notebooks/data
 
+# artifacts
+/notebooks/assets/*.png
+/notebooks/logs/train/
+/notebooks/logs/validation/
+
 # model artifacts
 *.hdf5
