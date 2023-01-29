@@ -14,3 +14,4 @@
 
 # model artifacts
 *.hdf5
+*.keras
