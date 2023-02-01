@@ -32,3 +32,6 @@ build-backend = "pdm.pep517.api"
 
 [tool]
 [tool.pdm]
+[tool.pdm.scripts]
+data_cats_vs_dogs = "./scripts/data/cats_vs_dogs.sh"
+data_pets = "./scripts/data/pets.sh"

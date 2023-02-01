@@ -42,6 +42,14 @@ python verify/pytorch.py
 pdm install
 ```
 
+### node
+
+some downloading tools depends on the node ecosystem
+
+```sh
+brew install fnm
+```
+
 ## notebooks
 
 activate the env
