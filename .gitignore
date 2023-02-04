@@ -8,7 +8,7 @@
 /notebooks/data
 
 # artifacts
-/notebooks/assets/*.png
+/notebooks/assets/
 /notebooks/logs/train/
 /notebooks/logs/validation/
 
