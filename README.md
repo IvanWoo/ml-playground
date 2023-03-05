@@ -64,6 +64,29 @@ open the jupyter lab
 jupyter lab
 ```
 
+## optional components
+
+### milvus
+
+start
+
+```sh
+helm repo add milvus https://milvus-io.github.io/milvus-helm/
+helm upgrade --install my-milvus milvus/milvus -f helm/milvus/values.yaml
+```
+
+connect
+
+```sh
+kubectl port-forward svc/my-milvus 19530
+```
+
+clean
+
+```sh
+helm uninstall my-milvus
+```
+
 ## ref
 
 - [Get started with tensorflow-metal](https://developer.apple.com/metal/tensorflow-plugin/)

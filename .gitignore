@@ -11,6 +11,7 @@
 /notebooks/assets/
 /notebooks/logs/train/
 /notebooks/logs/validation/
+/notebooks/vectors/data
 
 # model artifacts
 *.hdf5

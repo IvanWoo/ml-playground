@@ -22,6 +22,11 @@ dependencies = [
     "tensorboard>=2.10.1",
     "pydot>=1.4.2",
     "kaggle>=1.5.12",
+    "pymilvus>=2.2.2",
+    "gradio>=3.20.0",
+    "opencv-python>=4.7.0.72",
+    # FIXME: use the pypi when 1.0 released
+    "towhee @ git+https://github.com/towhee-io/towhee.git@main",
 ]
 requires-python = ">=3.9"
 license = {text = "MIT"}
@@ -39,3 +44,4 @@ data_jena_climate = "./scripts/data/jena_climate.sh"
 data_imdb = "./scripts/data/imdb.sh"
 data_glove = "./scripts/data/glove.sh"
 data_spa_eng = "./scripts/data/spa_eng.sh"
+data_reverse_image_search = "./scripts/data/reverse_image_search.sh"
