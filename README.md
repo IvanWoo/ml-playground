@@ -71,20 +71,22 @@ jupyter lab
 start
 
 ```sh
+kubectl create namespace milvus --dry-run=client -o yaml | kubectl apply -f -
 helm repo add milvus https://milvus-io.github.io/milvus-helm/
-helm upgrade --install my-milvus milvus/milvus -f helm/milvus/values.yaml
+helm upgrade --install my-milvus milvus/milvus --namespace milvus -f helm/milvus/values.yaml
 ```
 
 connect
 
 ```sh
-kubectl port-forward svc/my-milvus 19530
+kubectl port-forward svc/my-milvus --namespace milvus 19530
 ```
 
 clean
 
 ```sh
-helm uninstall my-milvus
+helm uninstall --namespace milvus my-milvus
+kubectl delete namespace milvus
 ```
 
 ## ref
