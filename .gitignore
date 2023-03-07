@@ -9,6 +9,7 @@
 /notebooks/logs/train/
 /notebooks/logs/validation/
 /notebooks/**/data
+/notebooks/**/tmp*
 
 # model artifacts
 *.hdf5

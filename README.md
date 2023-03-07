@@ -2,6 +2,13 @@
 
 ## prerequisites
 
+### git
+
+```sh
+brew install git git-lfs
+git lfs install
+```
+
 ### conda
 
 ```sh
@@ -65,6 +72,12 @@ jupyter lab
 ```
 
 ## optional components
+
+### pipx
+
+```sh
+pipx install gdown
+```
 
 ### milvus
 
