@@ -4,14 +4,11 @@
 # jupyter
 .ipynb_checkpoints
 
-# pytorch
-/notebooks/data
-
 # artifacts
 /notebooks/assets/
 /notebooks/logs/train/
 /notebooks/logs/validation/
-/notebooks/vectors/data
+/notebooks/**/data
 
 # model artifacts
 *.hdf5

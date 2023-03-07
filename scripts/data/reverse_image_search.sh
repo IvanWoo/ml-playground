@@ -4,7 +4,7 @@ set -euo pipefail
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="${BASE_DIR}/../.."
 VECTORS_DIR="${REPO_DIR}/notebooks/vectors"
-TARGET_DIR="${VECTORS_DIR}/data"
+TARGET_DIR="${VECTORS_DIR}/text_image_search_engine/data"
 
 (  
     mkdir -p $TARGET_DIR
