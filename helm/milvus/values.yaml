@@ -6,3 +6,5 @@ minio:
   mode: standalone
 pulsar:
   enabled: false
+attu:
+  enabled: true
