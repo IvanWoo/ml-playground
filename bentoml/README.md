@@ -2,7 +2,7 @@
 
 ## quickstart
 
-train and save the model
+### train and save the model
 
 ```sh
 pdm run python train_model.py
@@ -18,7 +18,7 @@ $ pdm run bentoml models list
  iris_clf:suw5eyv7swes2hr2  bentoml.sklearn  6.03 KiB  2023-03-10 17:47:49
 ```
 
-serve the model locally
+### serve the model locally
 
 ```sh
 pdm run bentoml serve service:svc --reload
@@ -35,7 +35,7 @@ $ curl -X POST \
 [2]
 ```
 
-build the bento
+### build the bento
 
 ```sh
 pdm run bentoml build
@@ -47,7 +47,7 @@ serve the model from the just build bento
 pdm run bentoml serve iris_classifier:latest --production
 ```
 
-generate the docker image
+### generate the docker image
 
 FIXME: nerdctl doesn't work due to no `BUILDKIT_HOST`
 
@@ -60,4 +60,25 @@ To run a portable buildkitd (via container), do the following in a terminal:
 
 ```sh
 pdm run bentoml containerize --opt platform=linux/amd64 --backend nerdctl iris_classifier:latest
+```
+
+workaround
+
+```sh
+cd $(pdm run bentoml get iris_classifier:latest  -o path)
+nerdctl build -t my/iris-classifier -f env/docker/Dockerfile .
+```
+
+run the docker image
+
+```sh
+nerdctl run -it --rm -p 3000:3000 my/iris-classifier:latest serve --production
+```
+
+call the service like above
+
+## cleanup
+
+```sh
+nerdctl image rm my/iris-classifier
 ```
