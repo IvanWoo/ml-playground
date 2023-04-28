@@ -21,3 +21,5 @@ node_modules
 # python
 __pycache__
 *.pickle
+.pdm-python
+.env
