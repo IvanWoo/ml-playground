@@ -16,9 +16,9 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0, stream=True):
         temperature=temperature,
         stream=stream,
     )
-    if not stream:
-        return response.choices[0].message["content"]
-    return response
+    if stream:
+        return response
+    return response.choices[0].message["content"]
 
 
 @click.command()
@@ -30,12 +30,12 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0, stream=True):
 @click.option("--stream", default=True, help="Stream the GPT response.")
 def main(prompt, model, temperature, stream):
     response = get_completion(prompt, model, temperature, stream)
-    if not stream:
-        print(response)
-    else:
+    if stream:
         for chunk in response:
             if content := chunk["choices"][0].get("delta").get("content"):
                 print(content, end="", flush=True)
+    else:
+        print(response)
 
 
 if __name__ == "__main__":
