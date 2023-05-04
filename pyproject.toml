@@ -22,7 +22,7 @@ dependencies = [
     "tensorboard>=2.10.1",
     "pydot>=1.4.2",
     "kaggle>=1.5.12",
-    "pymilvus>=2.2.2",
+    "pymilvus>=2.2.4",
     "gradio>=3.20.0",
     "opencv-python>=4.7.0.72",
     # FIXME: use the pypi when 1.0 released
@@ -33,6 +33,9 @@ dependencies = [
     "openai>=0.27.5",
     "redlines>=0.2.2",
     "panel>=0.14.4",
+    "langchain>=0.0.158",
+    "chromadb>=0.3.21",
+    "tiktoken>=0.3.3",
 ]
 requires-python = ">=3.9"
 license = {text = "MIT"}

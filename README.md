@@ -95,6 +95,12 @@ connect
 kubectl port-forward svc/my-milvus --namespace milvus 19530
 ```
 
+view the data in [Attu](http://127.0.0.1:3000/?#/collections)
+
+```sh
+kubectl port-forward svc/my-milvus-attu --namespace milvus 3000
+```
+
 clean
 
 ```sh
