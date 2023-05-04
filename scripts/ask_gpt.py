@@ -1,8 +1,10 @@
 import os
-import click
+from functools import partial
 
+import click
 import openai
 
+click.option = partial(click.option, show_default=True)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
