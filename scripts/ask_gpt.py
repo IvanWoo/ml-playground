@@ -29,6 +29,8 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0, stream=True):
 )
 @click.option("--stream", default=True, help="Stream the GPT response.")
 def main(prompt, model, temperature, stream):
+    print(f"提问: {prompt}\n")
+    print("gpt 回答: ", end="")
     response = get_completion(prompt, model, temperature, stream)
     if stream:
         for chunk in response:
