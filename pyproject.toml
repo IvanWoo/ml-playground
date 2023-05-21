@@ -1,6 +1,6 @@
 [project]
-name = ""
-version = ""
+name = "ml_playground"
+version = "0.1.0"
 description = ""
 authors = [
     {name = "Yifan Wu", email = "tyivanwu@gmail.com"},
