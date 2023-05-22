@@ -23,9 +23,10 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0, stream=True):
     return response.choices[0].message["content"]
 
 
-def compile_prompt(prompt, language, template):
-    _template = get_template(template)
-    return _template.format(prompt=prompt, language=language) if _template else prompt
+def compile_prompt(prompt: str, language: str, template: str) -> str:
+    if _template := get_template(template):
+        return _template.format(prompt=prompt, language=language)
+    return prompt
 
 
 @click.command()

@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Optional
 
 template_socratic_questioning = """
 Pretend you are GPT-4 model. Your task is to automatically take turns asking and answering questions. We'll begin with an initial question. Then go on answering and asking in this pattern:
@@ -38,5 +39,5 @@ template_map = {
 }
 
 
-def get_template(name: str) -> str:
+def get_template(name: str) -> Optional[str]:
     return template_map.get(name)
