@@ -27,15 +27,25 @@ Ask and answer in '{language}' regardless of the language I use. Don't show the 
 Now, the initial question is: '{prompt}'
 """
 
+template_jp_tutor = """
+You are Japanese language teacher. Whenever I ask you about a Japaneses snippet, you should explain the sentence structure, grammar and thesaurus with at least six examples from literature, lyrics or newspaper.
+
+Answer in '{language}' regardless of the language I use. Don't show the translation process. Just response in the destination language.
+
+Now, here is the Japanese snippet: '{prompt}'
+"""
+
 
 class Template(Enum):
     SOCRATIC = "socratic"
     THREE = "three"
+    JP_TUTOR = "jp_tutor"
 
 
 template_map = {
     Template.SOCRATIC.value: template_socratic_questioning,
     Template.THREE.value: template_three_questions,
+    Template.JP_TUTOR.value: template_jp_tutor,
 }
 
 
