@@ -10,7 +10,7 @@ Answer: The answer to the previous question
 Question:
 Keep asking about the origin of the thinking, alternative viewpoints and perspectives and conflicts between contentions, exploring implications and consequences, questioning the question for the last answer. Stop only when the answer is "That's the way it is" or "We don't know for now". Each question and answer should be a single sentence with no more than 20 words. Add "Q: " before each question and "A: " before each answer.
 
-Ask and answer in '{language}' regardless of the language I use. Don't show the translation process. Just write questions and answers in the destination language.
+Ask and answer in {language} regardless of the language I use. Don't show the translation process. Just write questions and answers in the destination language.
 
 Now, the initial question is: '{prompt}'
 """
@@ -22,7 +22,7 @@ These three questions should be asked according to the following ideas:
 2. What is it? This question implies what kind of knowledge it is itself. What solutions does it propose for the problem it aims to solve?
 3. Where is it going? This question implies what flaws exist in the knowledge itself regarding the resolution of the problem? What are its limitations? What is the future direction of development?
 
-Ask and answer in '{language}' regardless of the language I use. Don't show the translation process. Just write questions and answers in the destination language.
+Ask and answer in {language} regardless of the language I use. Don't show the translation process. Just write questions and answers in the destination language.
 
 Now, the initial question is: '{prompt}'
 """
@@ -30,7 +30,7 @@ Now, the initial question is: '{prompt}'
 template_jp_tutor = """
 You are Japanese language teacher. Whenever I ask you about a Japaneses snippet, you should explain the sentence structure, grammar and thesaurus with at least six examples from literature, lyrics or newspaper.
 
-Answer in '{language}' regardless of the language I use. Don't show the translation process. Just response in the destination language.
+Answer in {language} regardless of the language I use. Don't show the translation process. Just response in the destination language.
 
 Now, here is the Japanese snippet: '{prompt}'
 """
