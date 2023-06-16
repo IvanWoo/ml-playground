@@ -1277,7 +1277,7 @@ summary = "A generic, spec-compliant, thorough implementation of the OAuth reque
 
 [[package]]
 name = "openai"
-version = "0.27.5"
+version = "0.27.8"
 requires_python = ">=3.7.1"
 summary = "Python client library for the OpenAI API"
 dependencies = [
@@ -2227,15 +2227,14 @@ summary = "Tornado is a Python web framework and asynchronous networking library
 
 [[package]]
 name = "towhee"
-version = "0.9.1.dev104"
-git = "https://github.com/towhee-io/towhee.git"
-ref = "main"
-revision = "4a6c349268158fe5f7938240b2b42e820ad11ce0"
+version = "1.1.0"
 summary = "Towhee is a framework that helps you encode your unstructured data into embeddings."
 dependencies = [
     "numpy",
+    "pydantic",
     "requests>=2.12.5",
     "tabulate",
+    "tenacity",
     "tqdm>=4.59.0",
     "twine",
 ]
@@ -2449,8 +2448,9 @@ dependencies = [
 
 [metadata]
 lock_version = "4.2"
+cross_platform = true
 groups = ["default"]
-content_hash = "sha256:595b5b480d08abda4aa8b581a115728f483714f4578a73cbfa7eb33bc4e42967"
+content_hash = "sha256:be464c88bddf975bdaa8a38d3735bb46ae77960e6e913086b33120eb0a2f4cee"
 
 [metadata.files]
 "absl-py 1.3.0" = [
@@ -3984,9 +3984,9 @@ content_hash = "sha256:595b5b480d08abda4aa8b581a115728f483714f4578a73cbfa7eb33bc
     {url = "https://files.pythonhosted.org/packages/6d/fa/fbf4001037904031639e6bfbfc02badfc7e12f137a8afa254df6c4c8a670/oauthlib-3.2.2.tar.gz", hash = "sha256:9859c40929662bec5d64f34d01c99e093149682a3f38915dc0655d5a633dd918"},
     {url = "https://files.pythonhosted.org/packages/7e/80/cab10959dc1faead58dc8384a781dfbf93cb4d33d50988f7a69f1b7c9bbe/oauthlib-3.2.2-py3-none-any.whl", hash = "sha256:8139f29aac13e25d502680e9e19963e83f16838d48a0d71c287fe40e7067fbca"},
 ]
-"openai 0.27.5" = [
-    {url = "https://files.pythonhosted.org/packages/3a/c5/590e2285484583d470dc862b6f3d2629cd32ddc457d8e9de590e0702f491/openai-0.27.5-py3-none-any.whl", hash = "sha256:5b2121d8c0a4350626096fa482306d12e246a83b992530d54fd474f309f2882c"},
-    {url = "https://files.pythonhosted.org/packages/a8/63/06c9af0d68c2d0dc35f69d04fc49a177e3827b57e170cba9d568992f2de9/openai-0.27.5.tar.gz", hash = "sha256:75778ca05759c77dde704985ee16976ba58804212f10e61f44356e68ffb8390e"},
+"openai 0.27.8" = [
+    {url = "https://files.pythonhosted.org/packages/67/78/7588a047e458cb8075a4089d721d7af5e143ff85a2388d4a28c530be0494/openai-0.27.8-py3-none-any.whl", hash = "sha256:e0a7c2f7da26bdbe5354b03c6d4b82a2f34bd4458c7a17ae1a7092c3e397e03c"},
+    {url = "https://files.pythonhosted.org/packages/89/ee/84bbd0161090f0f24e8a2ac175e6b6a936289ee02e9d5da414ce14d3d332/openai-0.27.8.tar.gz", hash = "sha256:2483095c7db1eee274cebac79e315a986c4e55207bb4fa7b82d185b3a2ed9536"},
 ]
 "openapi-schema-pydantic 1.2.4" = [
     {url = "https://files.pythonhosted.org/packages/8e/8f/9d2fd2d5a233d916c03d7463c0c0bc2a1bfffb91abee80ef2d3bd9b40cda/openapi-schema-pydantic-1.2.4.tar.gz", hash = "sha256:3e22cf58b74a69f752cc7e5f1537f6e44164282db2700cbbcd3bb99ddd065196"},
@@ -5208,6 +5208,9 @@ content_hash = "sha256:595b5b480d08abda4aa8b581a115728f483714f4578a73cbfa7eb33bc
     {url = "https://files.pythonhosted.org/packages/f3/9e/225a41452f2d9418d89be5e32cf824c84fe1e639d350d6e8d49db5b7f73a/tornado-6.2.tar.gz", hash = "sha256:9b630419bde84ec666bfd7ea0a4cb2a8a651c2d5cccdbdd1972a0c859dfc3c13"},
     {url = "https://files.pythonhosted.org/packages/f9/51/6f63a166d9a3077be100cbb13dcbce434e5654daaaa7003b0a045b9f6edf/tornado-6.2-cp37-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:1d54d13ab8414ed44de07efecb97d4ef7c39f7438cf5e976ccd356bebb1b5fca"},
     {url = "https://files.pythonhosted.org/packages/fb/bd/074254a55bfc82d7a1886abbd803600ef01cbd76ee66bc30307b2724130b/tornado-6.2-cp37-abi3-macosx_10_9_universal2.whl", hash = "sha256:20f638fd8cc85f3cbae3c732326e96addff0a15e22d80f049e00121651e82e72"},
+]
+"towhee 1.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/82/bc/cebbaa9b62eb3d32383f595925132cb7a17c6f448beeb5dd35237e9b4db6/towhee-1.1.0-py3-none-any.whl", hash = "sha256:ebb896f48e6b5de1173b0c4f86e242cad916dca3d115aa65f6216cd388165ea4"},
 ]
 "towhee-models 0.9.0" = [
     {url = "https://files.pythonhosted.org/packages/35/0d/78580c41d1df71088697d637fc3d80c362d1aaafc85a8ad0fc4a128d157d/towhee.models-0.9.0-py3-none-any.whl", hash = "sha256:f87e3639b918e7e807476dd418ba7075845187e458746b1571e60265464440cd"},
