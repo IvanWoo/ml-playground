@@ -54,5 +54,6 @@ data_glove = "./scripts/data/glove.sh"
 data_spa_eng = "./scripts/data/spa_eng.sh"
 data_reverse_image_search = "./scripts/data/reverse_image_search.sh"
 data_msrvtt = "./scripts/data/msrvtt.sh"
+data_gtzan = "./scripts/data/gtzan.sh"
 ask_gpt = "./scripts/ask_gpt.py"
 
