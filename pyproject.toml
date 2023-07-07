@@ -32,7 +32,7 @@ dependencies = [
     "openai>=0.27.8",
     "redlines>=0.2.2",
     "panel>=0.14.4",
-    "langchain>=0.0.158",
+    "langchain>=0.0.227",
     "chromadb>=0.3.21",
     "tiktoken>=0.3.3",
 ]
