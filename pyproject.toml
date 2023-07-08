@@ -35,6 +35,8 @@ dependencies = [
     "langchain>=0.0.227",
     "chromadb>=0.3.21",
     "tiktoken>=0.3.3",
+    "docarray>=0.35.0",
+    "wikipedia>=1.4.0",
 ]
 requires-python = ">=3.9"
 license = {text = "MIT"}
