@@ -35,7 +35,7 @@ def compile_prompt(prompt: str, language: str, template: str) -> str:
 @click.option(
     "--temperature", default=0.8, help="Degree of randomness of the model's output."
 )
-@click.option("--stream", default=True, help="Stream the GPT response.")
+@click.option("--stream", default=True, is_flag=True, help="Stream the GPT response.")
 @click.option(
     "--template",
     type=click.Choice([t.value for t in Template]),
