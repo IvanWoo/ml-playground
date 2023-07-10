@@ -11,10 +11,12 @@ MILVUS_PORT = "19530"
 
 
 @click.command()
+@click.option("--model", default="gpt-3.5-turbo", help="OpenAI model.")
 @click.option(
     "--memory", default=False, is_flag=True, help="Enable memory in conversation."
 )
-def main(memory: bool):
+@click.option("--verbose", default=False, is_flag=True, help="Verbose for debug")
+def main(model: str, memory: bool, verbose: bool):
     embeddings = OpenAIEmbeddings()
 
     vectordb = Milvus.from_documents(
@@ -24,9 +26,9 @@ def main(memory: bool):
     )
     retriever = vectordb.as_retriever(search_kwargs={"k": 8})
 
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+    llm = ChatOpenAI(model_name=model, temperature=0)
 
-    template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. Use three sentences maximum. Keep the answer as concise as possible. Always say "thanks for asking!" at the end of the answer.
+    template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. Keep the answer as concise as possible. Always say "thanks for asking!" at the end of the answer.
     {context}
     Question: {question}
     Helpful Answer:"""
@@ -39,6 +41,7 @@ def main(memory: bool):
             llm,
             retriever=retriever,
             memory=_memory,
+            verbose=verbose,
         )
     else:
         qa_chain = RetrievalQA.from_chain_type(
@@ -47,6 +50,7 @@ def main(memory: bool):
             return_source_documents=True,
             chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
             chain_type="stuff",
+            verbose=verbose,
         )
 
     while True:
