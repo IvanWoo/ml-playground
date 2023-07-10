@@ -65,7 +65,7 @@ def main(model: str, memory: bool, verbose: bool):
             result = qa_chain({"query": query})
             print(result["result"])
             print(result["source_documents"][0])
-        print("\n")
+        print()
 
 
 if __name__ == "__main__":

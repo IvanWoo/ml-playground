@@ -59,4 +59,5 @@ data_msrvtt = "./scripts/data/msrvtt.sh"
 data_gtzan = "./scripts/data/gtzan.sh"
 data_kolena = "./scripts/data/kolena_doc.sh"
 ask_gpt = "./scripts/ask_gpt.py"
-
+langchain_cli = "langchain/search_index.py --memory"
+langchain_gui = "panel serve langchain/gui.py --autoreload --show"
