@@ -1,15 +1,15 @@
-from langchain.document_loaders import DirectoryLoader, TextLoader
+from langchain.document_loaders import DirectoryLoader, TextLoader, PythonLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.text_splitter import MarkdownHeaderTextSplitter
+from langchain.text_splitter import MarkdownHeaderTextSplitter, PythonCodeTextSplitter
 from langchain.vectorstores import Milvus
+from langchain.schema import Document
 
 
 MILVUS_HOST = "127.0.0.1"
 MILVUS_PORT = "19530"
 
 
-def main():
-    # TODO: add api docs
+def load_md_docs() -> list[Document]:
     loader = DirectoryLoader(
         "./langchain/data/kolena/docs",
         glob="**/*.md",
@@ -26,6 +26,37 @@ def main():
     ]
     text_splitter = MarkdownHeaderTextSplitter(headers_to_split_on=headers_to_split_on)
     splits = text_splitter.split_text(" ".join([d.page_content for d in documents]))
+    return splits
+
+
+def load_source_code() -> list[Document]:
+    def _load_code(dir: str) -> list[Document]:
+        loader = DirectoryLoader(
+            dir,
+            glob="**/*.py",
+            loader_cls=PythonLoader,
+            show_progress=True,
+        )
+        documents = loader.load()
+        text_splitter = PythonCodeTextSplitter()
+        splits = text_splitter.split_text(" ".join([d.page_content for d in documents]))
+        return [Document(page_content=s) for s in splits]
+
+    target_dirs = [
+        "./langchain/data/kolena/kolena",
+        "./langchain/data/kolena/tests",
+        "./langchain/data/kolena/examples",
+    ]
+    splits = []
+    for dir in target_dirs:
+        splits.extend(_load_code(dir))
+    return splits
+
+
+def main():
+    md_docs_splits = load_md_docs()
+    source_code_splits = load_source_code()
+    splits = md_docs_splits + source_code_splits
 
     embeddings = OpenAIEmbeddings()
     vectordb = Milvus.from_documents(

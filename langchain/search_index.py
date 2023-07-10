@@ -22,7 +22,7 @@ def main(memory: bool):
         embeddings,
         connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
     )
-    retriever = vectordb.as_retriever()
+    retriever = vectordb.as_retriever(search_kwargs={"k": 8})
 
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
 
