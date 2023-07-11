@@ -4,18 +4,28 @@
 
 ### start the milvus based on [this doc](/README.md)
 
+### download data
+
+```sh
+pdm run data_kolena
+```
+
 ### build index
 
 ```sh
 pdm run langchain/build_index.py
 ```
 
-### search index
+### chatbot
+
+#### cli
 
 ```sh
-pdm run langchain/search_index.py
+pdm run langchain_cli
 ```
 
-known issues:
+#### gui
 
-- `openai.error.InvalidRequestError: This model's maximum context length is 4097 tokens, however you requested 4699 tokens (4443 in your prompt; 256 for the completion). Please reduce your prompt; or completion length.`
+```sh
+pdm run langchain_gui
+```
