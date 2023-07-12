@@ -1,4 +1,6 @@
 import click
+import langchain
+
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Milvus
 from langchain.chat_models import ChatOpenAI
@@ -16,7 +18,9 @@ MILVUS_PORT = "19530"
     "--memory", default=False, is_flag=True, help="Enable memory in conversation."
 )
 @click.option("--verbose", default=False, is_flag=True, help="Verbose for debug")
-def main(model: str, memory: bool, verbose: bool):
+@click.option("--debug", default=False, is_flag=True, help="Debug mode")
+def main(model: str, memory: bool, verbose: bool, debug: bool):
+    langchain.debug = debug
     embeddings = OpenAIEmbeddings()
 
     vectordb = Milvus.from_documents(
