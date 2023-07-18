@@ -14,12 +14,14 @@ MILVUS_PORT = "19530"
 
 @click.command()
 @click.option("--model", default="gpt-3.5-turbo", help="OpenAI model.")
+@click.option("-ct", "--chain-type", default="stuff", help="Langchain chain type")
+@click.option("-k", "--k", default=8, help="Retriever parameter k")
 @click.option(
     "--memory", default=False, is_flag=True, help="Enable memory in conversation."
 )
 @click.option("--verbose", default=False, is_flag=True, help="Verbose for debug")
 @click.option("--debug", default=False, is_flag=True, help="Debug mode")
-def main(model: str, memory: bool, verbose: bool, debug: bool):
+def main(model: str, chain_type: str, k: int, memory: bool, verbose: bool, debug: bool):
     langchain.debug = debug
     embeddings = OpenAIEmbeddings()
 
@@ -28,7 +30,7 @@ def main(model: str, memory: bool, verbose: bool, debug: bool):
         embeddings,
         connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
     )
-    retriever = vectordb.as_retriever(search_kwargs={"k": 8})
+    retriever = vectordb.as_retriever(search_kwargs={"k": k})
 
     llm = ChatOpenAI(model_name=model, temperature=0)
 
@@ -44,6 +46,7 @@ def main(model: str, memory: bool, verbose: bool, debug: bool):
         qa_chain = ConversationalRetrievalChain.from_llm(
             llm,
             retriever=retriever,
+            chain_type=chain_type,
             memory=_memory,
             verbose=verbose,
         )
@@ -53,7 +56,7 @@ def main(model: str, memory: bool, verbose: bool, debug: bool):
             retriever=retriever,
             return_source_documents=True,
             chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
-            chain_type="stuff",
+            chain_type=chain_type,
             verbose=verbose,
         )
 
