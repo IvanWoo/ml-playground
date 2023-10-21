@@ -6,7 +6,7 @@ groups = ["default"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:9d3b67253b91a837ad43f92f940102f632877deadc127e718b79a25a17082599"
+content_hash = "sha256:40a073bbe292f8b17a03e3f4b0605ab729026e530854c88655914ee150b1b465"
 
 [[package]]
 name = "absl-py"
@@ -4271,6 +4271,19 @@ files = [
 ]
 
 [[package]]
+name = "portalocker"
+version = "2.8.2"
+requires_python = ">=3.8"
+summary = "Wraps the portalocker recipe for easy usage"
+dependencies = [
+    "pywin32>=226; platform_system == \"Windows\"",
+]
+files = [
+    {file = "portalocker-2.8.2-py3-none-any.whl", hash = "sha256:cfb86acc09b9aa7c3b43594e19be1345b9d16af3feb08bf92f23d4dce513a28e"},
+    {file = "portalocker-2.8.2.tar.gz", hash = "sha256:2b035aa7828e46c58e9b31390ee1f169b98e1066ab10b9a6a861fe7e25ee4f33"},
+]
+
+[[package]]
 name = "posthog"
 version = "3.0.1"
 summary = "Integrate PostHog into any python application."
@@ -5786,6 +5799,24 @@ dependencies = [
 files = [
     {file = "s3transfer-0.6.2-py3-none-any.whl", hash = "sha256:b014be3a8a2aab98cfe1abc7229cc5a9a0cf05eb9c1f2b86b230fd8df3f78084"},
     {file = "s3transfer-0.6.2.tar.gz", hash = "sha256:cab66d3380cca3e70939ef2255d01cd8aece6a4907a9528740f668c4b0611861"},
+]
+
+[[package]]
+name = "sacrebleu"
+version = "2.3.1"
+requires_python = ">=3.6"
+summary = "Hassle-free computation of shareable, comparable, and reproducible BLEU, chrF, and TER scores"
+dependencies = [
+    "colorama",
+    "lxml",
+    "numpy>=1.17",
+    "portalocker",
+    "regex",
+    "tabulate>=0.8.9",
+]
+files = [
+    {file = "sacrebleu-2.3.1-py3-none-any.whl", hash = "sha256:352227b8ca9e04ed509266d1fee6c8cff0ea1417c429f8c684645ad2db8b02e7"},
+    {file = "sacrebleu-2.3.1.tar.gz", hash = "sha256:7969b294f15dae84d80fb2b76d30c83b245f49f4ecb1cac79acb553eb93cb537"},
 ]
 
 [[package]]
