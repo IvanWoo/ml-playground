@@ -1,12 +1,9 @@
 from langchain.document_loaders import DirectoryLoader, TextLoader, PythonLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import MarkdownHeaderTextSplitter, PythonCodeTextSplitter
-from langchain.vectorstores import Milvus
 from langchain.schema import Document
 
-
-MILVUS_HOST = "127.0.0.1"
-MILVUS_PORT = "19530"
+from ml_playground.langchain.utils.db import from_documents
 
 
 def load_md_docs() -> list[Document]:
@@ -59,10 +56,9 @@ def main():
     splits = md_docs_splits + source_code_splits
 
     embeddings = OpenAIEmbeddings()
-    vectordb = Milvus.from_documents(
+    vectordb = from_documents(
         splits,
         embeddings,
-        connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
         drop_old=True,
     )
     return vectordb

@@ -79,7 +79,13 @@ jupyter lab
 pipx install gdown
 ```
 
-### milvus
+### infra
+
+tl;dr: `./scripts/infra/up.sh`
+
+tl;dr: `./scripts/infra/down.sh`
+
+#### milvus
 
 start
 

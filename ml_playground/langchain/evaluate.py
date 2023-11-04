@@ -2,22 +2,18 @@ from langchain.document_loaders import DirectoryLoader, TextLoader
 from langchain.chat_models import ChatOpenAI
 from langchain.evaluation.qa import QAGenerateChain, QAEvalChain
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import Milvus
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
+from ml_playground.langchain.utils.db import from_documents
 
 def get_qa_chain(model="gpt-3.5-turbo", verbose=False):
-    MILVUS_HOST = "127.0.0.1"
-    MILVUS_PORT = "19530"
-
     embeddings = OpenAIEmbeddings()
 
-    vectordb = Milvus.from_documents(
+    vectordb = from_documents(
         [],
         embeddings,
-        connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
     )
     retriever = vectordb.as_retriever(search_kwargs={"k": 8})
 

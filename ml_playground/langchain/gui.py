@@ -2,21 +2,16 @@ import panel as pn
 import param
 
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import Milvus
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
-
-MILVUS_HOST = "127.0.0.1"
-MILVUS_PORT = "19530"
-
+from ml_playground.langchain.utils.db import from_documents
 
 def load_db(model="gpt-3.5-turbo", chain_type="stuff", k=4):
     embeddings = OpenAIEmbeddings()
 
-    vectordb = Milvus.from_documents(
+    vectordb = from_documents(
         [],
         embeddings,
-        connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
     )
     retriever = vectordb.as_retriever(
         search_type="similarity",

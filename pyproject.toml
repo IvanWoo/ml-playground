@@ -2,9 +2,7 @@
 name = "ml_playground"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Yifan Wu", email = "tyivanwu@gmail.com"},
-]
+authors = [{ name = "Yifan Wu", email = "tyivanwu@gmail.com" }]
 dependencies = [
     "tensorflow-macos>=2.10.0",
     "tensorflow-metal>=0.6.0",
@@ -46,7 +44,7 @@ dependencies = [
     "nltk>=3.8.1",
 ]
 requires-python = ">=3.9"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
 [build-system]
 requires = ["pdm-backend"]
@@ -66,5 +64,5 @@ data_msrvtt = "./scripts/data/msrvtt.sh"
 data_gtzan = "./scripts/data/gtzan.sh"
 data_kolena = "./scripts/data/kolena_doc.sh"
 ask_gpt = "./scripts/ask_gpt.py"
-langchain_cli = "langchain/search_index.py --memory"
-langchain_gui = "panel serve langchain/gui.py --autoreload --show"
+langchain_cli = "ml_playground/langchain/search_index.py --memory"
+langchain_gui = "panel serve ml_playground/langchain/gui.py --autoreload --show"

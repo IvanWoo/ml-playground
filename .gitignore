@@ -10,7 +10,7 @@
 /notebooks/logs/validation/
 /notebooks/**/data
 /notebooks/**/tmp*
-/langchain/**/data
+/ml_playground/langchain/**/data
 
 # model artifacts
 *.hdf5

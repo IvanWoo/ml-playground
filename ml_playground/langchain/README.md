@@ -13,7 +13,7 @@ pdm run data_kolena
 ### build index
 
 ```sh
-pdm run langchain/build_index.py
+pdm run ml_playground/langchain/build_index.py
 ```
 
 ### chatbot
