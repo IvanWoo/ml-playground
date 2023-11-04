@@ -13,7 +13,7 @@ pdm run data_kolena
 ### build index
 
 ```sh
-pdm run ml_playground/langchain/build_index.py
+DB_BACKEND=pgvector pdm run ml_playground/langchain/build_index.py
 ```
 
 ### chatbot
@@ -21,11 +21,11 @@ pdm run ml_playground/langchain/build_index.py
 #### cli
 
 ```sh
-pdm run langchain_cli
+DB_BACKEND=pgvector pdm run langchain_cli
 ```
 
 #### gui
 
 ```sh
-pdm run langchain_gui
+DB_BACKEND=pgvector pdm run langchain_gui
 ```

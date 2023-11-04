@@ -6,6 +6,8 @@ REPO_DIR="${BASE_DIR}/../.."
 (
 cd ${REPO_DIR}
 kubectl create namespace milvus --dry-run=client -o yaml | kubectl apply -f -
+kubectl create namespace pgvector --dry-run=client -o yaml | kubectl apply -f -
 helm repo add milvus https://milvus-io.github.io/milvus-helm/
 helm upgrade --install my-milvus milvus/milvus --namespace milvus -f helm/milvus/values.yaml
+helm upgrade --install my-pgvector oci://registry-1.docker.io/bitnamicharts/postgresql --namespace pgvector -f helm/postgresql/values.yaml
 )

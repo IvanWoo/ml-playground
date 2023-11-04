@@ -2,14 +2,12 @@ import click
 import langchain
 
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import Milvus
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA, ConversationalRetrievalChain
 from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferMemory
 
-MILVUS_HOST = "127.0.0.1"
-MILVUS_PORT = "19530"
+from ml_playground.langchain.utils.db import from_documents
 
 
 @click.command()
@@ -25,10 +23,9 @@ def main(model: str, chain_type: str, k: int, memory: bool, verbose: bool, debug
     langchain.debug = debug
     embeddings = OpenAIEmbeddings()
 
-    vectordb = Milvus.from_documents(
+    vectordb = from_documents(
         [],
         embeddings,
-        connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
     )
     retriever = vectordb.as_retriever(search_kwargs={"k": k})
 

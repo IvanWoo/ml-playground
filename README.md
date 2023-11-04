@@ -114,6 +114,52 @@ helm uninstall --namespace milvus my-milvus
 kubectl delete namespace milvus
 ```
 
+#### pgvector
+
+build the image
+
+```sh
+nerdctl --namespace k8s.io build -t my/postgresql-pgvector -f helm/postgresql/Dockerfile helm/postgresql/
+```
+
+start
+
+```sh
+kubectl create namespace pgvector --dry-run=client -o yaml | kubectl apply -f -
+helm upgrade --install my-pgvector oci://registry-1.docker.io/bitnamicharts/postgresql --namespace pgvector -f helm/postgresql/values.yaml
+```
+
+enable pgvector extension
+
+```sh
+kubectl run my-pgvector-postgresql-client --rm --tty -i --restart='Never' --namespace pgvector --image my/postgresql-pgvector:latest --image-pull-policy='Never' --env="PGPASSWORD=demo_password" --command -- psql --host my-pgvector-postgresql -U postgres -d postgres -p 5432
+```
+
+```sql
+CREATE EXTENSION vector;
+```
+
+```sql
+postgres=# \dx
+                        List of installed extensions
+  Name   | Version |   Schema   |                Description
+---------+---------+------------+--------------------------------------------
+ plpgsql | 1.0     | pg_catalog | PL/pgSQL procedural language
+ vector  | 0.4.4   | public     | vector data type and ivfflat access method
+(2 rows)
+```
+
+```sh
+kubectl port-forward svc/my-pgvector-postgresql --namespace pgvector 5432
+```
+
+clean
+
+```sh
+helm uninstall --namespace pgvector my-pgvector
+kubectl delete namespace pgvector
+```
+
 ## ref
 
 - [Get started with tensorflow-metal](https://developer.apple.com/metal/tensorflow-plugin/)

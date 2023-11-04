@@ -6,6 +6,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from ml_playground.langchain.utils.db import from_documents
 
+
 def load_db(model="gpt-3.5-turbo", chain_type="stuff", k=4):
     embeddings = OpenAIEmbeddings()
 

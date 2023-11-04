@@ -6,5 +6,7 @@ REPO_DIR="${BASE_DIR}/../.."
 (
 cd ${REPO_DIR}
 helm uninstall --namespace milvus my-milvus
+helm uninstall --namespace pgvector my-pgvector
 kubectl delete namespace milvus
+kubectl delete namespace pgvector
 )

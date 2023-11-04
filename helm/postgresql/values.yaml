@@ -1,0 +1,10 @@
+global:
+  postgresql:
+    auth:
+      postgresPassword: demo_password
+
+image:
+  registry: ""
+  repository: my/postgresql-pgvector
+  tag: latest
+  pullPolicy: Never

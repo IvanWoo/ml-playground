@@ -8,6 +8,7 @@ from langchain.prompts import PromptTemplate
 
 from ml_playground.langchain.utils.db import from_documents
 
+
 def get_qa_chain(model="gpt-3.5-turbo", verbose=False):
     embeddings = OpenAIEmbeddings()
 

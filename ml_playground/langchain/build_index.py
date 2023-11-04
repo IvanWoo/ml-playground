@@ -4,11 +4,12 @@ from langchain.text_splitter import MarkdownHeaderTextSplitter, PythonCodeTextSp
 from langchain.schema import Document
 
 from ml_playground.langchain.utils.db import from_documents
+from ml_playground.utils.io import LIB_DIR
 
 
 def load_md_docs() -> list[Document]:
     loader = DirectoryLoader(
-        "./langchain/data/kolena/docs",
+        f"{LIB_DIR}/langchain/data/kolena/docs",
         glob="**/*.md",
         loader_cls=TextLoader,
         show_progress=True,
@@ -40,9 +41,9 @@ def load_source_code() -> list[Document]:
         return [Document(page_content=s) for s in splits]
 
     target_dirs = [
-        "./langchain/data/kolena/kolena",
-        "./langchain/data/kolena/tests",
-        "./langchain/data/kolena/examples",
+        f"{LIB_DIR}/langchain/data/kolena/kolena",
+        f"{LIB_DIR}/langchain/data/kolena/tests",
+        f"{LIB_DIR}/langchain/data/kolena/examples",
     ]
     splits = []
     for dir in target_dirs:
@@ -59,7 +60,7 @@ def main():
     vectordb = from_documents(
         splits,
         embeddings,
-        drop_old=True,
+        reset=True,
     )
     return vectordb
 
