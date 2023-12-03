@@ -24,3 +24,5 @@ __pycache__
 *.pickle
 .pdm-python
 .env
+
+kt_dir/
