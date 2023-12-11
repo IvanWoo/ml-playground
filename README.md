@@ -30,7 +30,31 @@ conda install -c apple tensorflow-deps
 verify the GPU acceleration
 
 ```sh
-python verify/tf.py
+pdm run verify/tf.py
+```
+
+```sh
+Metal device set to: Apple M1 Max
+
+systemMemory: 64.00 GB
+maxCacheSize: 24.00 GB
+
+2023-12-10 22:29:19.500955: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+2023-12-10 22:29:19.501092: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+2023-12-10 22:29:20.641573: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+Epoch 1/5
+/opt/homebrew/Caskroom/miniconda/base/envs/ml-playground/lib/python3.9/site-packages/tensorflow/python/util/dispatch.py:1082: UserWarning: "`sparse_categorical_crossentropy` received `from_logits=True`, but the `output` argument was produced by a sigmoid or softmax activation and thus does not represent logits. Was this intended?"
+  return dispatch_target(*args, **kwargs)
+2023-12-10 22:29:21.922694: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:113] Plugin optimizer for device_type GPU is enabled.
+782/782 [==============================] - 50s 60ms/step - loss: 4.7830 - accuracy: 0.0682
+Epoch 2/5
+782/782 [==============================] - 48s 62ms/step - loss: 4.2318 - accuracy: 0.1223
+Epoch 3/5
+782/782 [==============================] - 48s 62ms/step - loss: 4.1582 - accuracy: 0.1165
+Epoch 4/5
+782/782 [==============================] - 48s 61ms/step - loss: 3.9094 - accuracy: 0.1440
+Epoch 5/5
+782/782 [==============================] - 48s 62ms/step - loss: 3.6939 - accuracy: 0.1772
 ```
 
 ![tf gpu verification](assets/verify_tf_gpu.png)
