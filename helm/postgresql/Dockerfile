@@ -1,33 +1,7 @@
-# https://github.com/pgvector/pgvector/issues/126#issuecomment-1589203644
-ARG BITNAMI_POSTGRES_BASE_VERSION=15
-FROM bitnami/postgresql:$BITNAMI_POSTGRES_BASE_VERSION as build
-ARG BITNAMI_POSTGRES_BASE_VERSION
-ARG PGVECTOR_VERSION=v0.4.4
+# https://github.com/bitnami/containers/issues/32677#issuecomment-2089310891
+FROM pgvector/pgvector:pg17 AS builder
 
-USER root
+FROM bitnami/postgresql:17
 
-RUN set -e; \
-    install_packages build-essential git ; \
-    git clone --branch $PGVECTOR_VERSION https://github.com/pgvector/pgvector.git /tmp/pgvector ; \
-    cd /tmp/pgvector ; \
-    make OPTFLAGS="" ; \
-    make install ; \
-    :
-
-FROM bitnami/postgresql:$BITNAMI_POSTGRES_BASE_VERSION
-
-# Doc
-COPY --from=build \
-    /tmp/pgvector/README.md \
-    /tmp/pgvector/LICENSE \
-    /usr/share/doc/pgvector/
-# Code
-COPY --from=build \
-    /tmp/pgvector/vector.so \
-    /opt/bitnami/postgresql/lib/
-COPY --from=build \
-    /tmp/pgvector/vector.control \
-    /opt/bitnami/postgresql/share/extension/
-COPY --from=build \
-    /tmp/pgvector/sql/*.sql \
-    /opt/bitnami/postgresql/share/extension/
+COPY --from=builder /usr/lib/postgresql/17/lib/vector.so /opt/bitnami/postgresql/lib/
+COPY --from=builder /usr/share/postgresql/17/extension/vector* /opt/bitnami/postgresql/share/extension/

@@ -165,11 +165,11 @@ CREATE EXTENSION vector;
 
 ```sql
 postgres=# \dx
-                        List of installed extensions
-  Name   | Version |   Schema   |                Description
----------+---------+------------+--------------------------------------------
+                             List of installed extensions
+  Name   | Version |   Schema   |                     Description
+---------+---------+------------+------------------------------------------------------
  plpgsql | 1.0     | pg_catalog | PL/pgSQL procedural language
- vector  | 0.4.4   | public     | vector data type and ivfflat access method
+ vector  | 0.7.4   | public     | vector data type and ivfflat and hnsw access methods
 (2 rows)
 ```
 
