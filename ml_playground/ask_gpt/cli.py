@@ -37,11 +37,12 @@ def compile_prompt(prompt: str, language: str, template: str) -> str:
 )
 @click.option("--stream", default=True, is_flag=True, help="Stream the GPT response.")
 @click.option(
+    "-t",
     "--template",
     type=click.Choice([t.value for t in Template]),
     help="Prompt template.",
 )
-@click.option("--language", default="English", help="Target language of answers.")
+@click.option("-l", "--language", default="English", help="Target language of answers.")
 def main(prompt, model, temperature, stream, template, language):
     _prompt = compile_prompt(prompt, language, template)
     response = get_completion(

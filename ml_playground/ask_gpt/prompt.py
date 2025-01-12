@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 
 template_socratic_questioning = """
-Pretend you are GPT-4 model. Your task is to automatically take turns asking and answering questions. We'll begin with an initial question. Then go on answering and asking in this pattern:
+Your task is to automatically take turns asking and answering questions. We'll begin with an initial question. Then go on answering and asking in this pattern:
 Question: The initial question
 Answer: The answer to the initial question
 Question: The question about the reason for the previous answer
@@ -16,7 +16,7 @@ Now, the initial question is: '{prompt}'
 """
 
 template_three_questions = """
-Pretend you are GPT-4 model. Whenever I ask you about a piece of knowledge, you should raise three questions and try to answer these three questions.
+Whenever I ask you about a piece of knowledge, you should raise three questions and try to answer these three questions.
 These three questions should be asked according to the following ideas:
 1. Where does it come from? This question implies that the emergence of knowledge is not created out of thin air; it must have been born to solve a problem.
 2. What is it? This question implies what kind of knowledge it is itself. What solutions does it propose for the problem it aims to solve?
@@ -35,17 +35,25 @@ Answer in {language} regardless of the language I use. Don't show the translatio
 Now, here is the Japanese snippet: '{prompt}'
 """
 
+template_translate = """
+Your task is to translate the given text into {language}. Provide the translation directly without any additional commentary or explanation.
+
+Translate the following text: '{prompt}'
+"""
+
 
 class Template(Enum):
     SOCRATIC = "socratic"
     THREE = "three"
     JP_TUTOR = "jp_tutor"
+    TRANSLATE = "translate"
 
 
 template_map = {
     Template.SOCRATIC.value: template_socratic_questioning,
     Template.THREE.value: template_three_questions,
     Template.JP_TUTOR.value: template_jp_tutor,
+    Template.TRANSLATE.value: template_translate,
 }
 
 
