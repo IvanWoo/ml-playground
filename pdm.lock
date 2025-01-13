@@ -3,9 +3,12 @@
 
 [metadata]
 groups = ["default"]
-strategy = ["cross_platform"]
-lock_version = "4.4.1"
-content_hash = "sha256:1669014d28ac30f753fac077cde323e7fa8a0e3e112ba82f582a6a9b87476365"
+strategy = []
+lock_version = "4.5.0"
+content_hash = "sha256:33abc31f46aa092423521e8f48ddb842e88584426e6274ffdb26d6065197d28f"
+
+[[metadata.targets]]
+requires_python = ">=3.9,<3.11"
 
 [[package]]
 name = "absl-py"
@@ -35,10 +38,13 @@ summary = "Async http client/server framework (asyncio)"
 dependencies = [
     "aiosignal>=1.1.2",
     "async-timeout<5.0,>=4.0.0a3",
+    "asynctest==0.13.0; python_version < \"3.8\"",
     "attrs>=17.3.0",
     "charset-normalizer<4.0,>=2.0",
     "frozenlist>=1.1.1",
+    "idna-ssl>=1.0; python_version < \"3.7\"",
     "multidict<7.0,>=4.5",
+    "typing-extensions>=3.7.4; python_version < \"3.8\"",
     "yarl<2.0,>=1.0",
 ]
 files = [
@@ -186,8 +192,11 @@ version = "3.6.2"
 requires_python = ">=3.6.2"
 summary = "High level compatibility layer for multiple asynchronous event loop implementations"
 dependencies = [
+    "contextvars; python_version < \"3.7\"",
+    "dataclasses; python_version < \"3.7\"",
     "idna>=2.8",
     "sniffio>=1.1",
+    "typing-extensions; python_version < \"3.8\"",
 ]
 files = [
     {file = "anyio-3.6.2-py3-none-any.whl", hash = "sha256:fbbe32bd270d2a2ef3ed1c5d45041250284e31fc0a4df4a5a6071842051a51e3"},
@@ -217,6 +226,9 @@ name = "argcomplete"
 version = "3.1.1"
 requires_python = ">=3.6"
 summary = "Bash tab completion for argparse"
+dependencies = [
+    "importlib-metadata<7,>=0.23; python_version < \"3.8\"",
+]
 files = [
     {file = "argcomplete-3.1.1-py3-none-any.whl", hash = "sha256:35fa893a88deea85ea7b20d241100e64516d6af6d7b0ae2bed1d263d26f70948"},
     {file = "argcomplete-3.1.1.tar.gz", hash = "sha256:6c4c563f14f01440aaffa3eae13441c5db2357b5eec639abe7c0b15334627dff"},
@@ -229,6 +241,8 @@ requires_python = ">=3.6"
 summary = "The secure Argon2 password hashing algorithm."
 dependencies = [
     "argon2-cffi-bindings",
+    "dataclasses; python_version < \"3.7\"",
+    "typing-extensions; python_version < \"3.8\"",
 ]
 files = [
     {file = "argon2-cffi-21.3.0.tar.gz", hash = "sha256:d384164d944190a7dd7ef22c6aa3ff197da12962bd04b17f64d4e93d934dba5b"},
@@ -272,6 +286,9 @@ name = "asgiref"
 version = "3.6.0"
 requires_python = ">=3.7"
 summary = "ASGI specs, helper code, and adapters"
+dependencies = [
+    "typing-extensions; python_version < \"3.8\"",
+]
 files = [
     {file = "asgiref-3.6.0-py3-none-any.whl", hash = "sha256:71e68008da809b957b7ee4b43dbccff33d1b23519fb8344e33f049897077afac"},
     {file = "asgiref-3.6.0.tar.gz", hash = "sha256:9567dfe7bd8d3c8c892227827c41cce860b368104c3431da67a0c5a65a949506"},
@@ -295,6 +312,9 @@ name = "async-timeout"
 version = "4.0.2"
 requires_python = ">=3.6"
 summary = "Timeout context manager for asyncio programs"
+dependencies = [
+    "typing-extensions>=3.6.5; python_version < \"3.8\"",
+]
 files = [
     {file = "async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
     {file = "async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
@@ -350,20 +370,6 @@ summary = "Function decoration for backoff and retry"
 files = [
     {file = "backoff-2.2.1-py3-none-any.whl", hash = "sha256:63579f9a0628e06278f7e47b7d7d5b6ce20dc65c5e96a6f3ca99a6adca0396e8"},
     {file = "backoff-2.2.1.tar.gz", hash = "sha256:03f829f5bb1923180821643f8753b0502c3b682293992485b0eef2807afa5cba"},
-]
-
-[[package]]
-name = "baserun"
-version = "0.5.2"
-requires_python = ">=3.7.1"
-summary = "Tools for testing, debugging, and evaluating LLM features."
-dependencies = [
-    "openai>=0.27.2",
-    "requests>=2.31.0",
-]
-files = [
-    {file = "baserun-0.5.2-py3-none-any.whl", hash = "sha256:bf30c9d7fb64b168553e7432dec3bfd694d702ca32a7a36abfe4b3b233e1ddf9"},
-    {file = "baserun-0.5.2.tar.gz", hash = "sha256:a45c07c3ec0a6953f37e3280b95bfd0426d8ba3762f482231a6b17585767b14a"},
 ]
 
 [[package]]
@@ -440,6 +446,7 @@ dependencies = [
     "pathspec>=0.9.0",
     "platformdirs>=2",
     "tomli>=1.1.0; python_full_version < \"3.11.0a7\"",
+    "typed-ast>=1.4.2; python_version < \"3.8\" and implementation_name == \"cpython\"",
     "typing-extensions>=3.10.0.0; python_version < \"3.10\"",
 ]
 files = [
@@ -624,6 +631,7 @@ version = "1.0.9.2"
 summary = "Python CFFI bindings to the Brotli library"
 dependencies = [
     "cffi>=1.0.0",
+    "enum34; python_version < \"3.4\"",
 ]
 files = [
     {file = "brotlicffi-1.0.9.2-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:408ec4359f9763280d5c4e0ad29c51d1240b25fdd18719067e972163b4125b98"},
@@ -665,6 +673,7 @@ requires_python = ">= 3.7"
 summary = "A simple, correct Python build frontend"
 dependencies = [
     "colorama; os_name == \"nt\"",
+    "importlib-metadata>=0.22; python_version < \"3.8\"",
     "packaging>=19.0",
     "pyproject-hooks",
     "tomli>=1.1.0; python_version < \"3.11\"",
@@ -689,6 +698,7 @@ name = "category-encoders"
 version = "2.6.2"
 summary = "A collection of sklearn transformers to encode categorical variables as numeric"
 dependencies = [
+    "importlib-resources; python_version < \"3.9\"",
     "numpy>=1.14.0",
     "pandas>=1.0.5",
     "patsy>=0.5.1",
@@ -709,6 +719,7 @@ summary = "Composable complex class support for attrs and dataclasses."
 dependencies = [
     "attrs>=20",
     "exceptiongroup; python_version < \"3.11\"",
+    "typing-extensions; python_version < \"3.8\"",
 ]
 files = [
     {file = "cattrs-22.2.0-py3-none-any.whl", hash = "sha256:bc12b1f0d000b9f9bee83335887d532a1d3e99a833d1bf0882151c97d3e68c21"},
@@ -854,6 +865,7 @@ requires_python = ">=3.7"
 summary = "Composable command line interface toolkit"
 dependencies = [
     "colorama; platform_system == \"Windows\"",
+    "importlib-metadata; python_version < \"3.8\"",
 ]
 files = [
     {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
@@ -1125,6 +1137,9 @@ name = "dacite"
 version = "1.7.0"
 requires_python = ">=3.6"
 summary = "Simple creation of data classes from dictionaries."
+dependencies = [
+    "dataclasses; python_version < \"3.7\"",
+]
 files = [
     {file = "dacite-1.7.0-py3-none-any.whl", hash = "sha256:1cf5f7f548aecaa80c800441f8b9f4d656f7601ccc06c9c8c96ee40016a021af"},
     {file = "dacite-1.7.0.tar.gz", hash = "sha256:683a1d72c8fa0c0341034ddabc7a5c6f6ddc188033a26784417a9429dd3ffa51"},
@@ -1136,6 +1151,7 @@ version = "0.5.7"
 requires_python = ">=3.6"
 summary = "Easily serialize dataclasses to and from JSON"
 dependencies = [
+    "dataclasses; python_version == \"3.6\"",
     "marshmallow-enum<2.0.0,>=1.5.1",
     "marshmallow<4.0.0,>=3.3.0",
     "typing-inspect>=0.4.0",
@@ -1189,8 +1205,14 @@ dependencies = [
     "PyNomaly>=0.3.3",
     "beautifulsoup4>=4.11.1",
     "category-encoders>=2.3.0",
+    "dataclasses>=0.6; python_version < \"3.7\"",
+    "importlib-metadata>=1.4; python_version < \"3.8\"",
+    "importlib-resources>=1.3; python_version < \"3.9\"",
+    "ipykernel>=4.10.1; python_version < \"3.8\"",
     "ipykernel>=5.3.0; python_version >= \"3.8\"",
+    "ipython<8,>=5.5.0; python_version < \"3.8\"",
     "ipython<8,>=7.15.0; python_version >= \"3.8\"",
+    "ipywidgets<8,>=7.5.0; python_version < \"3.8\"",
     "ipywidgets<8,>=7.6.5; python_version >= \"3.8\"",
     "jsonpickle>=2",
     "matplotlib>=3.3.4",
@@ -1201,6 +1223,7 @@ dependencies = [
     "requests>=2.22.0",
     "scikit-learn>=0.23.2",
     "scipy<=1.10.1,>=1.4.1",
+    "statsmodels>=0.11.0; python_version < \"3.7\"",
     "statsmodels>=0.13.5; python_version >= \"3.7\"",
     "tqdm>=4.62.3",
     "typing-extensions>=4.0.0",
@@ -1270,6 +1293,16 @@ summary = "serialize all of Python"
 files = [
     {file = "dill-0.3.7-py3-none-any.whl", hash = "sha256:76b122c08ef4ce2eedcd4d1abd8e641114bfc6c2867f49f3c41facf65bf19f5e"},
     {file = "dill-0.3.7.tar.gz", hash = "sha256:cc1c8b182eb3013e24bd475ff2e9295af86c1a38eb1aff128dac8962a9ce3c03"},
+]
+
+[[package]]
+name = "distro"
+version = "1.9.0"
+requires_python = ">=3.6"
+summary = "Distro - an OS platform information API"
+files = [
+    {file = "distro-1.9.0-py3-none-any.whl", hash = "sha256:7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2"},
+    {file = "distro-1.9.0.tar.gz", hash = "sha256:2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed"},
 ]
 
 [[package]]
@@ -1434,6 +1467,7 @@ dependencies = [
     "fiftyone-db<0.5,>=0.4",
     "ftfy",
     "hypercorn>=0.13.2",
+    "importlib-metadata; python_version < \"3.8\"",
     "kaleido",
     "matplotlib",
     "mongoengine==0.24.2",
@@ -1613,8 +1647,11 @@ version = "2.4.16"
 summary = "Python's filesystem abstraction layer"
 dependencies = [
     "appdirs~=1.4.3",
+    "backports-os~=0.1; python_version < \"3.0\"",
+    "enum34~=1.1.6; python_version < \"3.4\"",
     "setuptools",
     "six~=1.10",
+    "typing~=3.6; python_version < \"3.6\"",
 ]
 files = [
     {file = "fs-2.4.16-py2.py3-none-any.whl", hash = "sha256:660064febbccda264ae0b6bace80a8d1be9e089e0a5eb2427b7d517f9a91545c"},
@@ -1678,7 +1715,9 @@ requires_python = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*"
 summary = "Google Authentication Library"
 dependencies = [
     "cachetools<6.0,>=2.0.0",
+    "enum34>=1.1.10; python_version < \"3.4\"",
     "pyasn1-modules>=0.2.1",
+    "rsa<4.6; python_version < \"3.6\"",
     "rsa<5,>=3.1.4; python_version >= \"3.6\"",
     "six>=1.9.0",
 ]
@@ -1756,6 +1795,9 @@ name = "graphql-core"
 version = "3.2.3"
 requires_python = ">=3.6,<4"
 summary = "GraphQL implementation for Python, a port of GraphQL.js, the JavaScript reference implementation for GraphQL."
+dependencies = [
+    "typing-extensions<5,>=4.2; python_version < \"3.8\"",
+]
 files = [
     {file = "graphql-core-3.2.3.tar.gz", hash = "sha256:06d2aad0ac723e35b1cb47885d3e5c45e956a53bc1b209a9fc5369007fe46676"},
     {file = "graphql_core-3.2.3-py3-none-any.whl", hash = "sha256:5766780452bd5ec8ba133f8bf287dc92713e3868ddd83aee4faab9fc3e303dc3"},
@@ -1835,6 +1877,8 @@ version = "1.47.5"
 requires_python = ">=3.6"
 summary = "HTTP/2-based RPC framework"
 dependencies = [
+    "enum34>=1.0.4; python_version < \"3.4\"",
+    "futures>=2.2.0; python_version < \"3.2\"",
     "six>=1.5.2",
 ]
 files = [
@@ -1950,6 +1994,9 @@ name = "h11"
 version = "0.14.0"
 requires_python = ">=3.7"
 summary = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
+dependencies = [
+    "typing-extensions; python_version < \"3.8\"",
+]
 files = [
     {file = "h11-0.14.0-py3-none-any.whl", hash = "sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761"},
     {file = "h11-0.14.0.tar.gz", hash = "sha256:8f19fbbe99e72420ff35c00b27a34cb9937e902a8b810e2c88300c6f0a3b699d"},
@@ -2110,6 +2157,7 @@ summary = "Client library to download and publish models, datasets and other rep
 dependencies = [
     "filelock",
     "fsspec",
+    "importlib-metadata; python_version < \"3.8\"",
     "packaging>=20.9",
     "pyyaml>=5.1",
     "requests",
@@ -2131,6 +2179,7 @@ dependencies = [
     "h2>=3.1.0",
     "priority",
     "tomli; python_version < \"3.11\"",
+    "typing-extensions>=3.7.4; python_version < \"3.8\"",
     "wsproto>=0.14.0",
 ]
 files = [
@@ -2213,6 +2262,7 @@ version = "6.11.0"
 requires_python = ">=3.8"
 summary = "Read metadata from Python packages"
 dependencies = [
+    "typing-extensions>=3.6.4; python_version < \"3.8\"",
     "zipp>=0.5",
 ]
 files = [
@@ -2225,6 +2275,9 @@ name = "inflate64"
 version = "0.3.1"
 requires_python = ">=3.7"
 summary = "deflate64 compression/decompression library"
+dependencies = [
+    "importlib-metadata; python_version < \"3.8\"",
+]
 files = [
     {file = "inflate64-0.3.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:d4e2a337c6c03b0e96ccd79940cbb04fe2063974d56fff6d78f8d57839546c57"},
     {file = "inflate64-0.3.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:7c142fbbbfbe0877fe821ff8bc4cc10f96d344b7400721579b3d17deeae28f59"},
@@ -2381,6 +2434,7 @@ summary = "IPython HTML widgets for Jupyter"
 dependencies = [
     "comm>=0.1.3",
     "ipython-genutils~=0.2.0",
+    "ipython<6.0.0,>=4.0.0; python_version < \"3.3\"",
     "ipython>=4.0.0; python_version >= \"3.3\"",
     "jupyterlab-widgets<3,>=1.0.0; python_version >= \"3.6\"",
     "traitlets>=4.3.1",
@@ -2451,6 +2505,39 @@ files = [
 ]
 
 [[package]]
+name = "jiter"
+version = "0.8.2"
+requires_python = ">=3.8"
+summary = "Fast iterable JSON parser."
+files = [
+    {file = "jiter-0.8.2-cp310-cp310-macosx_10_12_x86_64.whl", hash = "sha256:ca8577f6a413abe29b079bc30f907894d7eb07a865c4df69475e868d73e71c7b"},
+    {file = "jiter-0.8.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:b25bd626bde7fb51534190c7e3cb97cee89ee76b76d7585580e22f34f5e3f393"},
+    {file = "jiter-0.8.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d5c826a221851a8dc028eb6d7d6429ba03184fa3c7e83ae01cd6d3bd1d4bd17d"},
+    {file = "jiter-0.8.2-cp310-cp310-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:d35c864c2dff13dfd79fb070fc4fc6235d7b9b359efe340e1261deb21b9fcb66"},
+    {file = "jiter-0.8.2-cp310-cp310-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:f557c55bc2b7676e74d39d19bcb8775ca295c7a028246175d6a8b431e70835e5"},
+    {file = "jiter-0.8.2-cp310-cp310-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:580ccf358539153db147e40751a0b41688a5ceb275e6f3e93d91c9467f42b2e3"},
+    {file = "jiter-0.8.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:af102d3372e917cffce49b521e4c32c497515119dc7bd8a75665e90a718bbf08"},
+    {file = "jiter-0.8.2-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:cadcc978f82397d515bb2683fc0d50103acff2a180552654bb92d6045dec2c49"},
+    {file = "jiter-0.8.2-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:ba5bdf56969cad2019d4e8ffd3f879b5fdc792624129741d3d83fc832fef8c7d"},
+    {file = "jiter-0.8.2-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:3b94a33a241bee9e34b8481cdcaa3d5c2116f575e0226e421bed3f7a6ea71cff"},
+    {file = "jiter-0.8.2-cp310-cp310-win32.whl", hash = "sha256:6e5337bf454abddd91bd048ce0dca5134056fc99ca0205258766db35d0a2ea43"},
+    {file = "jiter-0.8.2-cp310-cp310-win_amd64.whl", hash = "sha256:4a9220497ca0cb1fe94e3f334f65b9b5102a0b8147646118f020d8ce1de70105"},
+    {file = "jiter-0.8.2-cp39-cp39-macosx_10_12_x86_64.whl", hash = "sha256:e41e75344acef3fc59ba4765df29f107f309ca9e8eace5baacabd9217e52a5ee"},
+    {file = "jiter-0.8.2-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:7f22b16b35d5c1df9dfd58843ab2cd25e6bf15191f5a236bed177afade507bfc"},
+    {file = "jiter-0.8.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f7200b8f7619d36aa51c803fd52020a2dfbea36ffec1b5e22cab11fd34d95a6d"},
+    {file = "jiter-0.8.2-cp39-cp39-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:70bf4c43652cc294040dbb62256c83c8718370c8b93dd93d934b9a7bf6c4f53c"},
+    {file = "jiter-0.8.2-cp39-cp39-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:f9d471356dc16f84ed48768b8ee79f29514295c7295cb41e1133ec0b2b8d637d"},
+    {file = "jiter-0.8.2-cp39-cp39-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:859e8eb3507894093d01929e12e267f83b1d5f6221099d3ec976f0c995cb6bd9"},
+    {file = "jiter-0.8.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:eaa58399c01db555346647a907b4ef6d4f584b123943be6ed5588c3f2359c9f4"},
+    {file = "jiter-0.8.2-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:8f2d5ed877f089862f4c7aacf3a542627c1496f972a34d0474ce85ee7d939c27"},
+    {file = "jiter-0.8.2-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:03c9df035d4f8d647f8c210ddc2ae0728387275340668fb30d2421e17d9a0841"},
+    {file = "jiter-0.8.2-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:8bd2a824d08d8977bb2794ea2682f898ad3d8837932e3a74937e93d62ecbb637"},
+    {file = "jiter-0.8.2-cp39-cp39-win32.whl", hash = "sha256:ca29b6371ebc40e496995c94b988a101b9fbbed48a51190a4461fcb0a68b4a36"},
+    {file = "jiter-0.8.2-cp39-cp39-win_amd64.whl", hash = "sha256:1c0dfbd1be3cbefc7510102370d86e35d1d53e5a93d48519688b1bf0f761160a"},
+    {file = "jiter-0.8.2.tar.gz", hash = "sha256:cd73d3e740666d0e639f678adb176fad25c1bcbdae88d8d7b857e1783bb4212d"},
+]
+
+[[package]]
 name = "jmespath"
 version = "1.0.1"
 requires_python = ">=3.7"
@@ -2486,6 +2573,7 @@ requires_python = ">=3.6"
 summary = "Library with helpers for the jsonlines file format"
 dependencies = [
     "attrs>=19.2.0",
+    "typing-extensions; python_version < \"3.8\"",
 ]
 files = [
     {file = "jsonlines-3.1.0-py3-none-any.whl", hash = "sha256:632f5e38f93dfcb1ac8c4e09780b92af3a55f38f26e7c47ae85109d420b6ad39"},
@@ -2510,6 +2598,9 @@ name = "jsonpickle"
 version = "3.0.2"
 requires_python = ">=3.7"
 summary = "Python library for serializing any arbitrary object graph into JSON"
+dependencies = [
+    "importlib-metadata; python_version < \"3.8\"",
+]
 files = [
     {file = "jsonpickle-3.0.2-py3-none-any.whl", hash = "sha256:4a8442d97ca3f77978afa58068768dba7bff2dbabe79a9647bc3cdafd4ef019f"},
     {file = "jsonpickle-3.0.2.tar.gz", hash = "sha256:e37abba4bfb3ca4a4647d28bb9f4706436f7b46c8a8333b4a718abafa8e46b37"},
@@ -2532,7 +2623,11 @@ requires_python = ">=3.7"
 summary = "An implementation of JSON Schema validation for Python"
 dependencies = [
     "attrs>=17.4.0",
+    "importlib-metadata; python_version < \"3.8\"",
+    "importlib-resources>=1.4.0; python_version < \"3.9\"",
+    "pkgutil-resolve-name>=1.3.10; python_version < \"3.9\"",
     "pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0",
+    "typing-extensions; python_version < \"3.8\"",
 ]
 files = [
     {file = "jsonschema-4.17.1-py3-none-any.whl", hash = "sha256:410ef23dcdbca4eaedc08b850079179883c2ed09378bd1f760d4af4aacfa28d7"},
@@ -2697,6 +2792,9 @@ files = [
 name = "kaleido"
 version = "0.2.1"
 summary = "Static image export for web-based visualization libraries with zero dependencies"
+dependencies = [
+    "pathlib; python_version < \"3.4\"",
+]
 files = [
     {file = "kaleido-0.2.1-py2.py3-none-macosx_10_11_x86_64.whl", hash = "sha256:ca6f73e7ff00aaebf2843f73f1d3bacde1930ef5041093fe76b83a15785049a7"},
     {file = "kaleido-0.2.1-py2.py3-none-macosx_11_0_arm64.whl", hash = "sha256:bb9a5d1f710357d5d432ee240ef6658a6d124c3e610935817b4b42da9c787c05"},
@@ -2735,6 +2833,7 @@ summary = "Store and access your passwords safely."
 dependencies = [
     "SecretStorage>=3.2; sys_platform == \"linux\"",
     "importlib-metadata>=4.11.4; python_version < \"3.12\"",
+    "importlib-resources; python_version < \"3.9\"",
     "jaraco-classes",
     "jeepney>=0.4.2; sys_platform == \"linux\"",
     "pywin32-ctypes>=0.2.0; sys_platform == \"win32\"",
@@ -2749,6 +2848,9 @@ name = "kiwisolver"
 version = "1.4.4"
 requires_python = ">=3.7"
 summary = "A fast implementation of the Cassowary constraint solver"
+dependencies = [
+    "typing-extensions; python_version < \"3.8\"",
+]
 files = [
     {file = "kiwisolver-1.4.4-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:2f5e60fabb7343a836360c4f0919b8cd0d6dbf08ad2ca6b9cf90bf0c76a3c4f6"},
     {file = "kiwisolver-1.4.4-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:10ee06759482c78bdb864f4109886dff7b8a56529bc1609d4f1112b93fe6423c"},
@@ -3112,6 +3214,7 @@ requires_python = ">=3.7"
 summary = "Python port of markdown-it. Markdown parsing, done right!"
 dependencies = [
     "mdurl~=0.1",
+    "typing-extensions>=3.7.4; python_version < \"3.8\"",
 ]
 files = [
     {file = "markdown-it-py-2.2.0.tar.gz", hash = "sha256:7c9a5e412688bc771c67432cbfebcdd686c93ce6484913dccf06cb5a0bea35a1"},
@@ -3517,6 +3620,9 @@ files = [
 name = "mypy-extensions"
 version = "0.4.3"
 summary = "Experimental type system extensions for programs checked with the mypy typechecker."
+dependencies = [
+    "typing>=3.5.3; python_version < \"3.5\"",
+]
 files = [
     {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
@@ -3602,6 +3708,7 @@ requires_python = ">=3.7"
 summary = "The Jupyter Notebook format"
 dependencies = [
     "fastjsonschema",
+    "importlib-metadata>=3.6; python_version < \"3.8\"",
     "jsonschema>=2.6",
     "jupyter-core",
     "traitlets>=5.1",
@@ -3694,6 +3801,7 @@ version = "0.58.1"
 requires_python = ">=3.8"
 summary = "compiling Python code using LLVM"
 dependencies = [
+    "importlib-metadata; python_version < \"3.9\"",
     "llvmlite<0.42,>=0.41.0dev0",
     "numpy<1.27,>=1.22",
 ]
@@ -3753,6 +3861,58 @@ files = [
 ]
 
 [[package]]
+name = "nvidia-cublas-cu11"
+version = "11.10.3.66"
+requires_python = ">=3"
+summary = "CUBLAS native runtime libraries"
+dependencies = [
+    "setuptools",
+    "wheel",
+]
+files = [
+    {file = "nvidia_cublas_cu11-11.10.3.66-py3-none-manylinux1_x86_64.whl", hash = "sha256:d32e4d75f94ddfb93ea0a5dda08389bcc65d8916a25cb9f37ac89edaeed3bded"},
+    {file = "nvidia_cublas_cu11-11.10.3.66-py3-none-win_amd64.whl", hash = "sha256:8ac17ba6ade3ed56ab898a036f9ae0756f1e81052a317bf98f8c6d18dc3ae49e"},
+]
+
+[[package]]
+name = "nvidia-cuda-nvrtc-cu11"
+version = "11.7.99"
+requires_python = ">=3"
+summary = "NVRTC native runtime libraries"
+files = [
+    {file = "nvidia_cuda_nvrtc_cu11-11.7.99-2-py3-none-manylinux1_x86_64.whl", hash = "sha256:9f1562822ea264b7e34ed5930567e89242d266448e936b85bc97a3370feabb03"},
+    {file = "nvidia_cuda_nvrtc_cu11-11.7.99-py3-none-manylinux1_x86_64.whl", hash = "sha256:f7d9610d9b7c331fa0da2d1b2858a4a8315e6d49765091d28711c8946e7425e7"},
+    {file = "nvidia_cuda_nvrtc_cu11-11.7.99-py3-none-win_amd64.whl", hash = "sha256:f2effeb1309bdd1b3854fc9b17eaf997808f8b25968ce0c7070945c4265d64a3"},
+]
+
+[[package]]
+name = "nvidia-cuda-runtime-cu11"
+version = "11.7.99"
+requires_python = ">=3"
+summary = "CUDA Runtime native Libraries"
+dependencies = [
+    "setuptools",
+    "wheel",
+]
+files = [
+    {file = "nvidia_cuda_runtime_cu11-11.7.99-py3-none-manylinux1_x86_64.whl", hash = "sha256:cc768314ae58d2641f07eac350f40f99dcb35719c4faff4bc458a7cd2b119e31"},
+    {file = "nvidia_cuda_runtime_cu11-11.7.99-py3-none-win_amd64.whl", hash = "sha256:bc77fa59a7679310df9d5c70ab13c4e34c64ae2124dd1efd7e5474b71be125c7"},
+]
+
+[[package]]
+name = "nvidia-cudnn-cu11"
+version = "8.5.0.96"
+requires_python = ">=3"
+summary = "cuDNN runtime libraries"
+dependencies = [
+    "nvidia-cublas-cu11",
+]
+files = [
+    {file = "nvidia_cudnn_cu11-8.5.0.96-2-py3-none-manylinux1_x86_64.whl", hash = "sha256:402f40adfc6f418f9dae9ab402e773cfed9beae52333f6d86ae3107a1b9527e7"},
+    {file = "nvidia_cudnn_cu11-8.5.0.96-py3-none-manylinux1_x86_64.whl", hash = "sha256:71f8111eb830879ff2836db3cccf03bbd735df9b0d17cd93761732ac50a8a108"},
+]
+
+[[package]]
 name = "nvidia-ml-py"
 version = "11.525.150"
 summary = "Python Bindings for the NVIDIA Management Library"
@@ -3773,17 +3933,22 @@ files = [
 
 [[package]]
 name = "openai"
-version = "0.28.1"
-requires_python = ">=3.7.1"
-summary = "Python client library for the OpenAI API"
+version = "1.59.6"
+requires_python = ">=3.8"
+summary = "The official Python library for the openai API"
 dependencies = [
-    "aiohttp",
-    "requests>=2.20",
-    "tqdm",
+    "anyio<5,>=3.5.0",
+    "distro<2,>=1.7.0",
+    "httpx<1,>=0.23.0",
+    "jiter<1,>=0.4.0",
+    "pydantic<3,>=1.9.0",
+    "sniffio",
+    "tqdm>4",
+    "typing-extensions<5,>=4.11",
 ]
 files = [
-    {file = "openai-0.28.1-py3-none-any.whl", hash = "sha256:d18690f9e3d31eedb66b57b88c2165d760b24ea0a01f150dd3f068155088ce68"},
-    {file = "openai-0.28.1.tar.gz", hash = "sha256:4be1dad329a65b4ce1a660fe6d5431b438f429b5855c883435f0f7fcb6d2dcc8"},
+    {file = "openai-1.59.6-py3-none-any.whl", hash = "sha256:b28ed44eee3d5ebe1a3ea045ee1b4b50fea36ecd50741aaa5ce5a5559c900cb6"},
+    {file = "openai-1.59.6.tar.gz", hash = "sha256:c7670727c2f1e4473f62fea6fa51475c8bc098c9ffb47bfb9eef5be23c747934"},
 ]
 
 [[package]]
@@ -3792,6 +3957,7 @@ version = "4.7.0.72"
 requires_python = ">=3.6"
 summary = "Wrapper package for OpenCV python bindings."
 dependencies = [
+    "numpy>=1.13.3; python_version < \"3.7\"",
     "numpy>=1.17.0; python_version >= \"3.7\"",
     "numpy>=1.17.3; python_version >= \"3.8\"",
     "numpy>=1.19.3; python_version >= \"3.6\" and platform_system == \"Linux\" and platform_machine == \"aarch64\"",
@@ -3799,6 +3965,7 @@ dependencies = [
     "numpy>=1.21.0; python_version <= \"3.9\" and platform_system == \"Darwin\" and platform_machine == \"arm64\"",
     "numpy>=1.21.2; python_version >= \"3.10\"",
     "numpy>=1.21.4; python_version >= \"3.10\" and platform_system == \"Darwin\"",
+    "numpy>=1.22.0; python_version >= \"3.11\"",
 ]
 files = [
     {file = "opencv-python-4.7.0.72.tar.gz", hash = "sha256:3424794a711f33284581f3c1e4b071cfc827d02b99d6fd9a35391f517c453306"},
@@ -3816,6 +3983,7 @@ version = "4.8.0.76"
 requires_python = ">=3.6"
 summary = "Wrapper package for OpenCV python bindings."
 dependencies = [
+    "numpy>=1.13.3; python_version < \"3.7\"",
     "numpy>=1.17.0; python_version >= \"3.7\"",
     "numpy>=1.17.3; python_version >= \"3.8\"",
     "numpy>=1.19.3; python_version >= \"3.6\" and platform_system == \"Linux\" and platform_machine == \"aarch64\"",
@@ -3823,6 +3991,7 @@ dependencies = [
     "numpy>=1.21.0; python_version <= \"3.9\" and platform_system == \"Darwin\" and platform_machine == \"arm64\"",
     "numpy>=1.21.2; python_version >= \"3.10\"",
     "numpy>=1.21.4; python_version >= \"3.10\" and platform_system == \"Darwin\"",
+    "numpy>=1.23.5; python_version >= \"3.11\"",
 ]
 files = [
     {file = "opencv-python-headless-4.8.0.76.tar.gz", hash = "sha256:bc15726187dae26d8a08777faf6bc71d38f20c785c102677f58ba0e935003afb"},
@@ -4015,6 +4184,7 @@ summary = "Powerful data structures for data analysis, time series, and statisti
 dependencies = [
     "numpy>=1.20.3; python_version < \"3.10\"",
     "numpy>=1.21.0; python_version >= \"3.10\"",
+    "numpy>=1.23.2; python_version >= \"3.11\"",
     "python-dateutil>=2.8.1",
     "pytz>=2020.1",
 ]
@@ -4161,6 +4331,9 @@ files = [
 name = "pickleshare"
 version = "0.7.5"
 summary = "Tiny 'shelve'-like database with concurrency support"
+dependencies = [
+    "pathlib2; python_version in \"2.6 2.7 3.2 3.3\"",
+]
 files = [
     {file = "pickleshare-0.7.5-py2.py3-none-any.whl", hash = "sha256:9649af414d74d4df115d5d718f82acb59c9d418196b7b4290ed47a12ce62df56"},
     {file = "pickleshare-0.7.5.tar.gz", hash = "sha256:87683d47965c1da65cdacaf31c8441d12b8044cdec9aca500cd78fc2c683afca"},
@@ -4545,6 +4718,7 @@ summary = "Pure python 7-zip library"
 dependencies = [
     "brotli>=1.0.9; platform_python_implementation == \"CPython\"",
     "brotlicffi>=1.0.9.2; platform_python_implementation == \"PyPy\"",
+    "importlib-metadata; python_version < \"3.8\"",
     "inflate64>=0.3.1; python_version > \"3.6\"",
     "multivolumefile>=0.2.3",
     "psutil; sys_platform != \"cygwin\"",
@@ -4621,6 +4795,9 @@ name = "pybcj"
 version = "1.0.1"
 requires_python = ">=3.6"
 summary = "bcj filter library"
+dependencies = [
+    "importlib-metadata; python_version < \"3.8\"",
+]
 files = [
     {file = "pybcj-1.0.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:20fc0d8f67e2d9747e0c31082d5f64b112258ae602a85aa5c7e6bf5a7cad287b"},
     {file = "pybcj-1.0.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:43e8bc75773ca06ee7a64602b799613171e4edf4d9d8fd38fa5c49f1cdbb4407"},
@@ -4881,6 +5058,7 @@ version = "1.10.1"
 requires_python = ">=3.7"
 summary = "Python bindings for libgit2."
 dependencies = [
+    "cached-property; python_version < \"3.8\"",
     "cffi>=1.9.1",
 ]
 files = [
@@ -4942,6 +5120,7 @@ dependencies = [
     "grpcio-tools<=1.48.0,>=1.47.0",
     "grpcio<=1.48.0,>=1.47.0",
     "mmh3<=3.0.0,>=2.0",
+    "pandas==1.1.5; python_version < \"3.7\"",
     "pandas>=1.2.4; python_version > \"3.6\"",
     "ujson<=5.4.0,>=2.0.0",
 ]
@@ -5194,6 +5373,7 @@ summary = "pytest: simple powerful testing with Python"
 dependencies = [
     "colorama; sys_platform == \"win32\"",
     "exceptiongroup>=1.0.0rc8; python_version < \"3.11\"",
+    "importlib-metadata>=0.12; python_version < \"3.8\"",
     "iniconfig",
     "packaging",
     "pluggy<2.0,>=0.12",
@@ -5872,6 +6052,7 @@ summary = "Render rich text, tables, progress bars, syntax highlighting, markdow
 dependencies = [
     "markdown-it-py<3.0.0,>=2.2.0",
     "pygments<3.0.0,>=2.13.0",
+    "typing-extensions<5.0,>=4.0.0; python_version < \"3.9\"",
 ]
 files = [
     {file = "rich-13.3.5-py3-none-any.whl", hash = "sha256:69cdf53799e63f38b95b9bf9c875f8c90e78dd62b2f00c13a911c7a3b9fa4704"},
@@ -6050,6 +6231,7 @@ dependencies = [
     "matplotlib!=3.6.1,>=3.1",
     "numpy!=1.24.0,>=1.17",
     "pandas>=0.25",
+    "typing-extensions; python_version < \"3.8\"",
 ]
 files = [
     {file = "seaborn-0.12.2-py3-none-any.whl", hash = "sha256:ebf15355a4dba46037dfd65b7350f014ceb1f13c05e814eda2c9f5fd731afc08"},
@@ -6254,6 +6436,10 @@ name = "simple-di"
 version = "0.1.5"
 requires_python = ">=3.6.1"
 summary = "simple dependency injection library"
+dependencies = [
+    "dataclasses; python_version < \"3.7.0\"",
+    "types-dataclasses; python_version < \"3.7.0\"",
+]
 files = [
     {file = "simple_di-0.1.5-py3-none-any.whl", hash = "sha256:e3fb6242f18f389a3c2d571dd51ade47c74cdbc4550590894664ad59bfb2a345"},
     {file = "simple_di-0.1.5.tar.gz", hash = "sha256:192b999dee4cd4fb11a5d861165caad02d8f0617c0f806fc5b09f905f1a03ca0"},
@@ -6321,6 +6507,9 @@ name = "soupsieve"
 version = "2.3.2.post1"
 requires_python = ">=3.6"
 summary = "A modern CSS selector implementation for Beautiful Soup."
+dependencies = [
+    "backports-functools-lru-cache; python_version < \"3\"",
+]
 files = [
     {file = "soupsieve-2.3.2.post1-py3-none-any.whl", hash = "sha256:3b2503d3c7084a42b1ebd08116e5f81aadfaea95863628c80a3b774a11b7c759"},
     {file = "soupsieve-2.3.2.post1.tar.gz", hash = "sha256:fc53893b3da2c33de295667a0e19f078c14bf86544af307354de5fcf12a3f30d"},
@@ -6355,6 +6544,7 @@ requires_python = ">=3.7"
 summary = "Database Abstraction Library"
 dependencies = [
     "greenlet!=0.4.17; platform_machine == \"win32\" or platform_machine == \"WIN32\" or platform_machine == \"AMD64\" or platform_machine == \"amd64\" or platform_machine == \"x86_64\" or platform_machine == \"ppc64le\" or platform_machine == \"aarch64\"",
+    "importlib-metadata; python_version < \"3.8\"",
     "typing-extensions>=4.2.0",
 ]
 files = [
@@ -6481,6 +6671,7 @@ version = "0.138.1"
 requires_python = ">=3.7,<4.0"
 summary = "A library for creating GraphQL APIs"
 dependencies = [
+    "backports-cached-property<2.0.0,>=1.0.2; python_version < \"3.8\"",
     "graphql-core<3.3.0,>=3.2.0",
     "python-dateutil<3.0.0,>=2.7.0",
     "typing-extensions<5.0.0,>=3.7.4",
@@ -6798,6 +6989,10 @@ version = "1.13.0"
 requires_python = ">=3.7.0"
 summary = "Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 dependencies = [
+    "nvidia-cublas-cu11==11.10.3.66",
+    "nvidia-cuda-nvrtc-cu11==11.7.99",
+    "nvidia-cuda-runtime-cu11==11.7.99",
+    "nvidia-cudnn-cu11==8.5.0.96",
     "typing-extensions",
 ]
 files = [
@@ -6829,7 +7024,7 @@ name = "torchaudio"
 version = "0.13.0"
 summary = "An audio package for PyTorch"
 dependencies = [
-    "torch",
+    "torch==1.13.0",
 ]
 files = [
     {file = "torchaudio-0.13.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:2b7bcc5f4a8814c22a66b55ad2d8e23015c081acc99063edaf2d152c8fb0ce7b"},
@@ -6872,7 +7067,7 @@ dependencies = [
     "numpy",
     "pillow!=8.3.*,>=5.3.0",
     "requests",
-    "torch",
+    "torch==1.13.0",
     "typing-extensions",
 ]
 files = [
@@ -6921,6 +7116,8 @@ name = "towhee"
 version = "1.1.0"
 summary = "Towhee is a framework that helps you encode your unstructured data into embeddings."
 dependencies = [
+    "contextvars; python_version <= \"3.6\"",
+    "importlib-resources; python_version < \"3.7\"",
     "numpy",
     "pydantic",
     "requests>=2.12.5",
@@ -6938,6 +7135,7 @@ name = "towhee-models"
 version = "0.9.0"
 summary = "Towhee is a framework that helps you encode your unstructured data into embeddings."
 dependencies = [
+    "importlib-resources; python_version < \"3.7\"",
     "numpy",
     "pgzip",
     "pyarrow",
@@ -6958,6 +7156,7 @@ requires_python = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
 summary = "Fast, Extensible Progress Meter"
 dependencies = [
     "colorama; platform_system == \"Windows\"",
+    "importlib-resources; python_version < \"3.7\"",
 ]
 files = [
     {file = "tqdm-4.64.1-py2.py3-none-any.whl", hash = "sha256:6fee160d6ffcd1b1c68c65f14c829c22832bc401726335ce92c52d395944a6a1"},
@@ -6982,6 +7181,7 @@ summary = "State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow"
 dependencies = [
     "filelock",
     "huggingface-hub<1.0,>=0.11.0",
+    "importlib-metadata; python_version < \"3.8\"",
     "numpy>=1.17",
     "packaging>=20.0",
     "pyyaml>=5.1",
@@ -7039,12 +7239,12 @@ files = [
 
 [[package]]
 name = "typing-extensions"
-version = "4.4.0"
-requires_python = ">=3.7"
-summary = "Backported and Experimental Type Hints for Python 3.7+"
+version = "4.12.2"
+requires_python = ">=3.8"
+summary = "Backported and Experimental Type Hints for Python 3.8+"
 files = [
-    {file = "typing_extensions-4.4.0-py3-none-any.whl", hash = "sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e"},
-    {file = "typing_extensions-4.4.0.tar.gz", hash = "sha256:1511434bb92bf8dd198c12b1cc812e800d4181cfcb867674e0f8279cc93087aa"},
+    {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},
+    {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
 ]
 
 [[package]]
@@ -7054,6 +7254,7 @@ summary = "Runtime inspection utilities for typing module."
 dependencies = [
     "mypy-extensions>=0.3.0",
     "typing-extensions>=3.7.4",
+    "typing>=3.7.4; python_version < \"3.5\"",
 ]
 files = [
     {file = "typing_inspect-0.8.0-py3-none-any.whl", hash = "sha256:5fbf9c1e65d4fa01e701fe12a5bca6c6e08a4ffd5bc60bfac028253a447c5188"},
@@ -7076,6 +7277,7 @@ version = "5.0.1"
 requires_python = ">=3.7"
 summary = "tzinfo object for the local timezone"
 dependencies = [
+    "backports-zoneinfo; python_version < \"3.9\"",
     "tzdata; platform_system == \"Windows\"",
 ]
 files = [
@@ -7181,6 +7383,7 @@ summary = "The lightning-fast ASGI server."
 dependencies = [
     "click>=7.0",
     "h11>=0.8",
+    "typing-extensions; python_version < \"3.8\"",
 ]
 files = [
     {file = "uvicorn-0.22.0-py3-none-any.whl", hash = "sha256:e9434d3bbf05f310e762147f769c9f21235ee118ba2d2bf1155a7196448bd996"},
@@ -7257,6 +7460,7 @@ dependencies = [
     "dill",
     "future",
     "glob2",
+    "importlib-metadata; python_version < \"3.8\"",
     "jsonlines",
     "numpy",
     "opencv-python-headless<5,>=4.1",
@@ -7312,6 +7516,9 @@ files = [
 name = "wcwidth"
 version = "0.2.5"
 summary = "Measures the displayed width of unicode strings in a terminal"
+dependencies = [
+    "backports-functools-lru-cache>=1.2.1; python_version < \"3.2\"",
+]
 files = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
     {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
@@ -7563,6 +7770,7 @@ summary = "Yet another URL library"
 dependencies = [
     "idna>=2.0",
     "multidict>=4.0",
+    "typing-extensions>=3.7.4; python_version < \"3.8\"",
 ]
 files = [
     {file = "yarl-1.8.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:bb81f753c815f6b8e2ddd2eef3c855cf7da193b82396ac013c661aaa6cc6b0a5"},

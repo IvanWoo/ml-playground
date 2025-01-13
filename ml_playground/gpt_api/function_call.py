@@ -1,5 +1,5 @@
-import openai
 import json
+from openai import OpenAI
 
 
 # Example dummy function hard coded to return the same weather
@@ -17,8 +17,9 @@ def get_current_weather(location, unit="fahrenheit"):
 
 # Step 1, send model the user query and what functions it has access to
 def run_conversation(prompt):
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo-0613",
+    client = OpenAI()
+    response = client.chat.completions.create(
+        model="gpt-4",
         messages=[{"role": "user", "content": prompt}],
         functions=[
             {
@@ -40,13 +41,13 @@ def run_conversation(prompt):
         function_call="auto",
     )
 
-    message = response["choices"][0]["message"]
+    message = response.choices[0].message
     print(f"{message=}")
 
     # Step 2, check if the model wants to call a function
-    if message.get("function_call"):
-        function_name = message["function_call"]["name"]
-        function_args = json.loads(message["function_call"]["arguments"])
+    if message.function_call:
+        function_name = message.function_call.name
+        function_args = json.loads(message.function_call.arguments)
 
         # Step 3, call the function
         # Note: the JSON response from the model may not be valid JSON
@@ -56,8 +57,8 @@ def run_conversation(prompt):
         )
 
         # Step 4, send model the info on the function call and function response
-        second_response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-0613",
+        second_response = client.chat.completions.create(
+            model="gpt-4",
             messages=[
                 {"role": "user", "content": prompt},
                 message,

@@ -1,26 +1,11 @@
-import os
 from functools import partial
 
 import click
-import openai
 
+from ml_playground.ask_gpt.utils import get_completion
 from ml_playground.ask_gpt.prompt import Template, get_template
 
 click.option = partial(click.option, show_default=True)
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-
-def get_completion(prompt, model="gpt-3.5-turbo", temperature=0, stream=True):
-    messages = [{"role": "user", "content": prompt}]
-    response = openai.ChatCompletion.create(
-        model=model,
-        messages=messages,
-        temperature=temperature,
-        stream=stream,
-    )
-    if stream:
-        return response
-    return response.choices[0].message["content"]
 
 
 def compile_prompt(prompt: str, language: str, template: str) -> str:
@@ -56,7 +41,7 @@ def main(prompt, model, temperature, stream, template, language):
     print("gpt 回答: ", end="")
     if stream:
         for chunk in response:
-            if content := chunk["choices"][0].get("delta").get("content"):
+            if content := chunk.choices[0].delta.content:
                 print(content, end="", flush=True)
     else:
         print(response)

@@ -38,7 +38,6 @@ dependencies = [
     "fiftyone>=0.21.6",
     "kaleido==0.2.1",
     "deepchecks[vision]>=0.17.4",
-    "baserun>=0.5.2",
     "pytest>=7.4.1",
     "sacrebleu>=2.3.1",
     "nltk>=3.8.1",
