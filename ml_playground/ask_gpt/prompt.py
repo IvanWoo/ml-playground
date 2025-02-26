@@ -41,12 +41,17 @@ Your task is to translate the given text into {language}. Provide the translatio
 Translate the following text: '{prompt}'
 """
 
+template_professional_advice = """
+I'm doing {prompt}. If you are a professional, do you have better methods and suggestions? Please be as comprehensive as possible in {language}.
+"""
+
 
 class Template(Enum):
     SOCRATIC = "socratic"
     THREE = "three"
     JP_TUTOR = "jp_tutor"
     TRANSLATE = "translate"
+    PROFESSIONAL_ADVICE = "professional_advice"
 
 
 template_map = {
@@ -54,6 +59,7 @@ template_map = {
     Template.THREE.value: template_three_questions,
     Template.JP_TUTOR.value: template_jp_tutor,
     Template.TRANSLATE.value: template_translate,
+    Template.PROFESSIONAL_ADVICE.value: template_professional_advice,
 }
 
 
