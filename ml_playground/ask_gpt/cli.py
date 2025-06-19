@@ -16,7 +16,7 @@ def compile_prompt(prompt: str, language: str, template: str) -> str:
 
 @click.command()
 @click.argument("prompt", required=True)
-@click.option("--model", default="gpt-4o", help="Model of GPT.")
+@click.option("--model", default="gpt-4.1", help="Model of GPT.")
 @click.option(
     "--temperature", default=0.8, help="Degree of randomness of the model's output."
 )

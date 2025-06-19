@@ -17,7 +17,7 @@ conda init fish
 ```
 
 ```sh
-conda create -n ml-playground python=3.9 -y
+conda create -n ml-playground python=3.12 -y
 conda activate ml-playground
 ```
 
@@ -64,7 +64,7 @@ Epoch 5/5
 verify the GPU acceleration
 
 ```sh
-python verify/pytorch.py
+pdm run verify/pytorch.py
 ```
 
 ### [pdm](https://pdm.fming.dev/latest/)

@@ -62,6 +62,12 @@ template_map = {
     Template.PROFESSIONAL_ADVICE.value: template_professional_advice,
 }
 
+template_default = """
+Answer in {language} regardless of the language I use. Don't show the translation process. Just response in the destination language.
+
+Now, here is the question: '{prompt}'
+"""
+
 
 def get_template(name: str) -> Optional[str]:
-    return template_map.get(name)
+    return template_map.get(name, template_default)
