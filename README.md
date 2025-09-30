@@ -17,15 +17,12 @@ conda init fish
 ```
 
 ```sh
-conda create -n ml-playground python=3.12 -y
+conda create -n ml-playground python=3.11 -y
 conda activate ml-playground
+pdm install
 ```
 
 ### tensorflow
-
-```sh
-conda install -c apple tensorflow-deps
-```
 
 verify the GPU acceleration
 

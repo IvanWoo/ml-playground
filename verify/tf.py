@@ -1,4 +1,10 @@
 import tensorflow as tf
+from tensorflow.keras import mixed_precision
+
+# TODO: speed up tf on m1 chip
+mixed_precision.set_global_policy("mixed_float16")
+
+print(tf.config.list_physical_devices("GPU"))
 
 cifar = tf.keras.datasets.cifar100
 (x_train, y_train), (x_test, y_test) = cifar.load_data()
